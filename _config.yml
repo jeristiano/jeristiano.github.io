@@ -4,15 +4,15 @@
 
 # Site
 title: Jeremy's blog
-subtitle:
-description:
+subtitle: Don't be evil
+description: Jeremy's blog是一个基于Github和Hexo的静态Blog，希望用简单而清晰的写作方式Markdown分享自己的心得体会
 author: jeremyK
-language:
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://jeristiano.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -72,3 +72,22 @@ deploy:
   repo: https://github.com/jeristiano/jeristiano.github.io.git
   branch: master
   
+# Others
+index_generator:
+  per_page: 5 ##首页默认10篇文章标题 如果值为0不分页
+
+archive_generator:
+    per_page: 0 ##归档页面默认10篇文章标题
+    yearly: true  ##生成年视图
+    monthly: true ##生成月视图
+
+tag_generator:
+    per_page: 0 ##标签分类页面默认10篇文章
+
+category_generator: 
+    per_page: 0 ###分类页面默认10篇文章
+
+feed:
+    type: atom ##feed类型 atom或者rss2
+    path: atom.xml ##feed路径
+    limit: 20  ##feed文章最小数量
