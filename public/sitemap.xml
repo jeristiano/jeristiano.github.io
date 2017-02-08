@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jeristiano.github.io/2017/02/08/firstblog/</loc>
+    
+    <lastmod>2017-02-08T06:50:22.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jeristiano.github.io/2017/02/08/laravel-not/</loc>
+    
+    <lastmod>2017-02-08T06:50:13.895Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jeristiano.github.io/2017/02/07/hello-world/</loc>
     
     <lastmod>2017-02-08T01:50:51.490Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://jeristiano.github.io/about/index.html</loc>
     
     <lastmod>2017-02-08T01:39:42.526Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jeristiano.github.io/2017/02/07/lost/</loc>
-    
-    <lastmod>2017-02-07T14:17:36.993Z</lastmod>
     
   </url>
   
