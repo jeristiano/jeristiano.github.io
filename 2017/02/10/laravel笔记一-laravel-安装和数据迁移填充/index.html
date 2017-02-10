@@ -1,0 +1,594 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>laravel笔记之laravel 安装和数据迁移填充 | Jeremy&#39;s space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jeremyK">
+    
+
+    
+    <meta name="description" content="本教程示例代码见：https://github.com/johnlui/Learn-Laravel-5
+
+在任何地方卡住，最快的办法就是去看示例代码。
+开始学习1.安装许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：http://pkg.phpcomposer.com/ 。启用 Compose">
+<meta property="og:type" content="article">
+<meta property="og:title" content="laravel笔记之laravel 安装和数据迁移填充">
+<meta property="og:url" content="https://jeristiano.github.io/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/index.html">
+<meta property="og:site_name" content="Jeremy's space">
+<meta property="og:description" content="本教程示例代码见：https://github.com/johnlui/Learn-Laravel-5
+
+在任何地方卡住，最快的办法就是去看示例代码。
+开始学习1.安装许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：http://pkg.phpcomposer.com/ 。启用 Compose">
+<meta property="og:image" content="https://camo.githubusercontent.com/813c1698e040f3b29cd92f763e6ce1e2dd29c03f/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323831303139323130342e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/1c989f7363771f11d916c5112066f3839b3a88aa/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323936353739343437372e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/8abbf525301bd53ec10368258e38e69b0174bd42/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032303236323138312e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/2e3c07b19fca3a3be7eb994beccbf2e44d1e3671/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032323136393039342e6a7067">
+<meta property="og:image" content="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14623689497675.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/a7675080d45339266815b2802e11d685f97c777a/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373137313131323931372e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/629b71dcd42b94825e9075b5eaada4758b083dbd/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373330353231313336362e6a7067">
+<meta property="og:image" content="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14627305849059.jpg">
+<meta property="og:updated_time" content="2017-02-10T09:06:43.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="laravel笔记之laravel 安装和数据迁移填充">
+<meta name="twitter:description" content="本教程示例代码见：https://github.com/johnlui/Learn-Laravel-5
+
+在任何地方卡住，最快的办法就是去看示例代码。
+开始学习1.安装许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：http://pkg.phpcomposer.com/ 。启用 Compose">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/813c1698e040f3b29cd92f763e6ce1e2dd29c03f/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323831303139323130342e6a7067">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jeremy&#39;s space" title="Jeremy&#39;s space"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jeremy&#39;s space">Jeremy&#39;s space</a></h1>
+				<h2 class="blog-motto">Don&#39;t be evil</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/index">索引 | Index</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:jeristiano.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/" title="laravel笔记之laravel 安装和数据迁移填充" itemprop="url">laravel笔记之laravel 安装和数据迁移填充</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-10T08:58:44.000Z" itemprop="datePublished"> 发表于 2017-02-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开始学习"><span class="toc-number">1.</span> <span class="toc-text">开始学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-运行"><span class="toc-number">1.2.</span> <span class="toc-text">2.运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-体验牛逼闪闪的-Auth-系统"><span class="toc-number">1.3.</span> <span class="toc-text">3. 体验牛逼闪闪的 Auth 系统</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-修改配置"><span class="toc-number">1.3.1.</span> <span class="toc-text">a. 修改配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-进行数据库迁移（migration）"><span class="toc-number">1.3.2.</span> <span class="toc-text">b. 进行数据库迁移（migration）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-migration-是啥？"><span class="toc-number">1.3.3.</span> <span class="toc-text">c. migration 是啥？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-使用-Laravel-的“葵花宝典”：Eloquent"><span class="toc-number">1.4.</span> <span class="toc-text">5. 使用 Laravel 的“葵花宝典”：Eloquent</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-Eloquent-是什么"><span class="toc-number">1.4.1.</span> <span class="toc-text">a. Eloquent 是什么</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-怎么用？"><span class="toc-number">1.4.2.</span> <span class="toc-text">b. 怎么用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用-Migration-和-Seeder"><span class="toc-number">2.</span> <span class="toc-text">6. 使用 Migration 和 Seeder</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-使用-artisan-生成-Migration"><span class="toc-number">2.0.1.</span> <span class="toc-text">a. 使用 artisan 生成 Migration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-使用-artisan-生成-Seeder"><span class="toc-number">2.0.2.</span> <span class="toc-text">b. 使用 artisan 生成 Seeder</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原文：https-github-com-johnlui-Learn-Laravel-5-issues-4"><span class="toc-number">2.1.</span> <span class="toc-text">原文：https://github.com/johnlui/Learn-Laravel-5/issues/4</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>本教程示例代码见：<a href="https://github.com/johnlui/Learn-Laravel-5" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5</a></p>
+</blockquote>
+<p>在任何地方卡住，最快的办法就是去看示例代码。</p>
+<h3 id="开始学习"><a href="#开始学习" class="headerlink" title="开始学习"></a>开始学习</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：<a href="http://pkg.phpcomposer.com/" target="_blank" rel="external">http://pkg.phpcomposer.com/</a> 。启用 Composer 镜像服务作为本教程的第一项小作业请自行完成哦。</p>
+<p>镜像配置完成后，在终端（Terminal 或 CMD）里切换到你想要放置该网站的目录下（如 C:\wwwroot、/Library/WebServer/Documents/、/var/www/html、/etc/nginx/html 等），运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel learnlaravel5 5.2.31</div></pre></td></tr></table></figure>
+<p>然后，稍等片刻，当前目录下就会出现一个叫 learnlaravel5 的文件夹，安装完成啦~</p>
+<h4 id="2-运行"><a href="#2-运行" class="headerlink" title="2.运行"></a>2.运行</h4><p>为了尽可能地减缓学习曲线，推荐宝宝们使用 PHP 内置 web 服务器驱动我们的网站。运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd learnlaravel5/public</div><div class="line">php -S 0.0.0.0:1024</div></pre></td></tr></table></figure>
+<p>这时候访问 <a href="http://127.0.0.1:1024" target="_blank" rel="external">http://127.0.0.1:1024</a> 就是这个样子的：</p>
+<p><img src="https://camo.githubusercontent.com/813c1698e040f3b29cd92f763e6ce1e2dd29c03f/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323831303139323130342e6a7067" alt="laravel5"></p>
+<p>我在本地 hosts 中绑定了 fuck.io 到 127.0.0.1，所以截图中我的域名是 fuck.io 而不是 127.0.0.1，其实他们是完全等价的。</p>
+<p>这时候你可能要问了：为什么本宝宝的页面是一片空白？请使用开发者工具查看网络请求，只要是 200 状态就说明运行成功了，空白是因为这个页面引用了 Google Fonts，你懂的~</p>
+<p>至于为什么选择 1024 端口？因为他是 *UNIX 系统动态端口的开始，是我们不需要 root 权限就可以随意监听的数值最小的端口。</p>
+<p>另外，建议不熟悉 PHP 运行环境搭建的宝宝们不要轻易尝试使用 Apache 或 Nginx 驱动 Laravel，特别是在开启了 SELinux 的 Linux 系统上跑。关于 Laravel 在 Linux 上部署的大坑，本宝宝可能要单写一篇长文分享给宝宝们。</p>
+<h4 id="3-体验牛逼闪闪的-Auth-系统"><a href="#3-体验牛逼闪闪的-Auth-系统" class="headerlink" title="3. 体验牛逼闪闪的 Auth 系统"></a>3. 体验牛逼闪闪的 Auth 系统</h4><p>Laravel 利用 PHP5.4 的新特性 trait 内置了非常完善好用的简单用户登录注册功能，适合一些不需要复杂用户权限管理的系统，例如公司内部用的简单管理系统。</p>
+<p>激活这个功能非常容易，运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:auth</div></pre></td></tr></table></figure>
+<p>访问 <a href="http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：" target="_blank" rel="external">http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：</a><br><img src="https://camo.githubusercontent.com/1c989f7363771f11d916c5112066f3839b3a88aa/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323936353739343437372e6a7067" alt="login"></p>
+<ol>
+<li>连接数据库</li>
+</ol>
+<p>接下来我们要连接数据库了，请自行准备好 MySQL 服务哦。</p>
+<h5 id="a-修改配置"><a href="#a-修改配置" class="headerlink" title="a. 修改配置"></a>a. 修改配置</h5><p>不出意外的话，learnlaravel5 目录下已经有了一个 .env 文件，如果没有，可以复制一份 .env.example 文件重命名成 .env，修改下面几行的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DB_HOST=127.0.0.1</div><div class="line">DB_PORT=3306</div><div class="line">DB_DATABASE=laravel5</div><div class="line">DB_USERNAME=root</div><div class="line">DB_PASSWORD=root</div></pre></td></tr></table></figure>
+<p>推荐新建一个名为 laravel5 的数据库，并且使用 root 账户直接操作，降低学习数据库的成本。</p>
+<p>数据库配置好之后，在登录界面填写任意邮箱和密码，点击 Login，你应该会得到以下画面：<br><img src="https://camo.githubusercontent.com/8abbf525301bd53ec10368258e38e69b0174bd42/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032303236323138312e6a7067" alt="error"></p>
+<p>它说 users 表不存在呀，接下来我们将见识 Laravel 另外一个实用特性。</p>
+<h5 id="b-进行数据库迁移（migration）"><a href="#b-进行数据库迁移（migration）" class="headerlink" title="b. 进行数据库迁移（migration）"></a>b. 进行数据库迁移（migration）</h5><p>运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>我们得到了如下结果：</p>
+<p><img src="https://camo.githubusercontent.com/2e3c07b19fca3a3be7eb994beccbf2e44d1e3671/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032323136393039342e6a7067" alt="result"></p>
+<p>数据库迁移成功！赶快打开 <a href="http://fuck.io:1024/home" target="_blank" rel="external">http://fuck.io:1024/home</a> 注册一个用户试试吧~</p>
+<p>下图是本宝宝注册了一个 username 为 1 用户：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14623689497675.jpg" alt="user1"></p>
+<h5 id="c-migration-是啥？"><a href="#c-migration-是啥？" class="headerlink" title="c. migration 是啥？"></a>c. migration 是啥？</h5><p>打开 <code>learnlaravel5/database/migrations/2014_10_12_000000_create_users_table.php</code>文件，你肯定能一眼看出它的作用：用 PHP 描述数据库构造，并且使用命令行一次性部署所有数据库结构。</p>
+<h4 id="5-使用-Laravel-的“葵花宝典”：Eloquent"><a href="#5-使用-Laravel-的“葵花宝典”：Eloquent" class="headerlink" title="5. 使用 Laravel 的“葵花宝典”：Eloquent"></a>5. 使用 Laravel 的“葵花宝典”：Eloquent</h4><p>Eloquent 是 Laravel 的 ORM，是 Laravel 系统中最强大的地方，没有之一。当初 Laravel 作者在开发第一版的时候花了整整三分之一的时间才搞出来 Eloquent。当然，“欲练此功，必先自宫”，Eloquent 也是 Laravel 中最慢的地方，迄今无法解决。（路由、自动载入、配置分散、视图引发的性能问题都通过缓存几乎彻底解决了）</p>
+<p>当然，我们还是要承袭第一版教程中对 Eloquent ORM 的描述：鹅妹子英！</p>
+<h5 id="a-Eloquent-是什么"><a href="#a-Eloquent-是什么" class="headerlink" title="a. Eloquent 是什么"></a>a. Eloquent 是什么</h5><p>Eloquent 是 Laravel 内置的 ORM 系统，我们的 Model 类将继承自 Eloquent 提供的 Model 类，然后，就天生具备了数十个异常强大的函数，从此想干啥事儿都是一行代码就搞定。</p>
+<h5 id="b-怎么用？"><a href="#b-怎么用？" class="headerlink" title="b. 怎么用？"></a>b. 怎么用？</h5><p>我们使用 Artisan 工具新建 Model 类及其附属的 Migration 和 Seeder（数据填充）类。</p>
+<p>运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
+<p>去看看你的 app 目录，下面是不是多了一个 Article.php 文件？那就是 Artisan 帮我们生成的 Model 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App;</div><div class="line"></div><div class="line">use Illuminate\Database\Eloquent\Model;</div><div class="line"></div><div class="line">class Article extends Model</div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如此简洁有力的代码，隐藏了背后极高的难度和巨大的复杂度，让我们闭上眼睛，静静地感受 Laravel 的优雅吧 (～￣▽￣)～</p>
+<h3 id="6-使用-Migration-和-Seeder"><a href="#6-使用-Migration-和-Seeder" class="headerlink" title="6. 使用 Migration 和 Seeder"></a>6. 使用 Migration 和 Seeder</h3><p>接下来我们生成对应 Article 这个 Model 的 Migration 和 Seeder。</p>
+<h5 id="a-使用-artisan-生成-Migration"><a href="#a-使用-artisan-生成-Migration" class="headerlink" title="a. 使用 artisan 生成 Migration"></a>a. 使用 artisan 生成 Migration</h5><p>在 learnlaravel5 目录下运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_article_table</div></pre></td></tr></table></figure>
+<p>成功之后打开 <code>learnlaravel5/database/migrations</code>，你会发现有一个名为 2<strong>*</strong>_create_article_table 的文件被创建了。我们修改他的 up 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public function up()</div><div class="line">&#123;</div><div class="line">    Schema::create(&apos;articles&apos;, function(Blueprint $table)</div><div class="line">    &#123;</div><div class="line">        $table-&gt;increments(&apos;id&apos;);</div><div class="line">        $table-&gt;string(&apos;title&apos;);</div><div class="line">        $table-&gt;text(&apos;body&apos;)-&gt;nullable();</div><div class="line">        $table-&gt;integer(&apos;user_id&apos;);</div><div class="line">        $table-&gt;timestamps();</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这几行代码描述的是 Article 对应的数据库中那张表的结构。Laravel 默认 Model 对应的表名是这个英文单词的复数形式，在这里，就是 articles。接下来让我们把 PHP 代码变成真实的 MySQL 中的数据表，运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>执行成功后，articles 表已经出现在数据库里了：</p>
+<p><img src="https://camo.githubusercontent.com/a7675080d45339266815b2802e11d685f97c777a/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373137313131323931372e6a7067" alt="article"></p>
+<h5 id="b-使用-artisan-生成-Seeder"><a href="#b-使用-artisan-生成-Seeder" class="headerlink" title="b. 使用 artisan 生成 Seeder"></a>b. 使用 artisan 生成 Seeder</h5><p>Seeder 是我们接触到的一个新概念，字面意思为播种机。Seeder 解决的是我们在开发 web 应用的时候，需要手动向数据库中填入假数据的繁琐低效问题。</p>
+<p>运行以下命令创建 Seeder 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:seeder ArticleSeeder</div></pre></td></tr></table></figure>
+<p>我们会发现 learnlaravel5/database/seeds 里多了一个文件 ArticleSeeder.php，修改此文件中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    DB::table(&apos;articles&apos;)-&gt;delete();</div><div class="line"></div><div class="line">    for ($i=0; $i &lt; 10; $i++) &#123;</div><div class="line">        \App\Article::create([</div><div class="line">            &apos;title&apos;   =&gt; &apos;Title &apos;.$i,</div><div class="line">            &apos;body&apos;    =&gt; &apos;Body &apos;.$i,</div><div class="line">            &apos;user_id&apos; =&gt; 1,</div><div class="line">        ]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们把 ArticleSeeder 注册到系统内。修改 <code>learnlaravel5/database/seeds/DatabaseSeeder.php</code>中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    $this-&gt;call(ArticleSeeder::class);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于 database 目录没有像 app 目录那样被 composer 注册为 psr-4 自动加载，采用的是 psr-0 classmap 方式，所以我们还需要运行以下命令把<code>ArticleSeeder.php</code>加入自动加载系统，避免找不到类的错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer dump-autoload</div></pre></td></tr></table></figure>
+<p>然后执行 seed：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan db:seed</div></pre></td></tr></table></figure>
+<p>你应该得到如下结果：<br><img src="https://camo.githubusercontent.com/629b71dcd42b94825e9075b5eaada4758b083dbd/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373330353231313336362e6a7067" alt="seed"><br>这时候刷新一下数据库中的 articles 表，会发现已经被插入了 10 行假数据：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14627305849059.jpg" alt="data"></p>
+<h4 id="原文：https-github-com-johnlui-Learn-Laravel-5-issues-4"><a href="#原文：https-github-com-johnlui-Learn-Laravel-5-issues-4" class="headerlink" title="原文：https://github.com/johnlui/Learn-Laravel-5/issues/4"></a>原文：<a href="https://github.com/johnlui/Learn-Laravel-5/issues/4" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5/issues/4</a></h4>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/编程/">编程</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/laravel/">laravel</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://jeristiano.github.io/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/" data-title="laravel笔记之laravel 安装和数据迁移填充 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/09/蔡氏效应/"  title="蔡氏效应">
+ <strong>下一篇：</strong><br/> 
+ <span>蔡氏效应
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/" data-title="laravel笔记之laravel 安装和数据迁移填充" data-url="https://jeristiano.github.io/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开始学习"><span class="toc-number">1.</span> <span class="toc-text">开始学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-运行"><span class="toc-number">1.2.</span> <span class="toc-text">2.运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-体验牛逼闪闪的-Auth-系统"><span class="toc-number">1.3.</span> <span class="toc-text">3. 体验牛逼闪闪的 Auth 系统</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-修改配置"><span class="toc-number">1.3.1.</span> <span class="toc-text">a. 修改配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-进行数据库迁移（migration）"><span class="toc-number">1.3.2.</span> <span class="toc-text">b. 进行数据库迁移（migration）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-migration-是啥？"><span class="toc-number">1.3.3.</span> <span class="toc-text">c. migration 是啥？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-使用-Laravel-的“葵花宝典”：Eloquent"><span class="toc-number">1.4.</span> <span class="toc-text">5. 使用 Laravel 的“葵花宝典”：Eloquent</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-Eloquent-是什么"><span class="toc-number">1.4.1.</span> <span class="toc-text">a. Eloquent 是什么</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-怎么用？"><span class="toc-number">1.4.2.</span> <span class="toc-text">b. 怎么用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用-Migration-和-Seeder"><span class="toc-number">2.</span> <span class="toc-text">6. 使用 Migration 和 Seeder</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-使用-artisan-生成-Migration"><span class="toc-number">2.0.1.</span> <span class="toc-text">a. 使用 artisan 生成 Migration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-使用-artisan-生成-Seeder"><span class="toc-number">2.0.2.</span> <span class="toc-text">b. 使用 artisan 生成 Seeder</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原文：https-github-com-johnlui-Learn-Laravel-5-issues-4"><span class="toc-number">2.1.</span> <span class="toc-text">原文：https://github.com/johnlui/Learn-Laravel-5/issues/4</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="jeristiano" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/杂谈/" title="杂谈">杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/laravel/" title="laravel">laravel<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/罗辑思维/" title="罗辑思维">罗辑思维<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/蔡氏效应/" title="蔡氏效应">蔡氏效应<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/jeristiano" target="_blank" title="GitHub">GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 时来天地皆同力,运去英雄不自由 <br/>
+			The Long Lost One To</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jeristiano" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:jeremykuang@foxmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="jeremyK">jeremyK</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"jerisitiano"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

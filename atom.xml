@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jeristiano.github.io/"/>
-  <updated>2017-02-09T09:30:38.572Z</updated>
+  <updated>2017-02-10T09:06:43.114Z</updated>
   <id>https://jeristiano.github.io/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>laravel笔记之laravel 安装和数据迁移填充</title>
+    <link href="https://jeristiano.github.io/2017/02/10/laravel%E7%AC%94%E8%AE%B0%E4%B8%80-laravel-%E5%AE%89%E8%A3%85%E5%92%8C%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%A1%AB%E5%85%85/"/>
+    <id>https://jeristiano.github.io/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/</id>
+    <published>2017-02-10T08:58:44.000Z</published>
+    <updated>2017-02-10T09:06:43.114Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本教程示例代码见：<a href="https://github.com/johnlui/Learn-Laravel-5" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5</a></p>
+</blockquote>
+<p>在任何地方卡住，最快的办法就是去看示例代码。</p>
+<h3 id="开始学习"><a href="#开始学习" class="headerlink" title="开始学习"></a>开始学习</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：<a href="http://pkg.phpcomposer.com/" target="_blank" rel="external">http://pkg.phpcomposer.com/</a> 。启用 Composer 镜像服务作为本教程的第一项小作业请自行完成哦。</p>
+<p>镜像配置完成后，在终端（Terminal 或 CMD）里切换到你想要放置该网站的目录下（如 C:\wwwroot、/Library/WebServer/Documents/、/var/www/html、/etc/nginx/html 等），运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel learnlaravel5 5.2.31</div></pre></td></tr></table></figure>
+<p>然后，稍等片刻，当前目录下就会出现一个叫 learnlaravel5 的文件夹，安装完成啦~</p>
+<h4 id="2-运行"><a href="#2-运行" class="headerlink" title="2.运行"></a>2.运行</h4><p>为了尽可能地减缓学习曲线，推荐宝宝们使用 PHP 内置 web 服务器驱动我们的网站。运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd learnlaravel5/public</div><div class="line">php -S 0.0.0.0:1024</div></pre></td></tr></table></figure>
+<p>这时候访问 <a href="http://127.0.0.1:1024" target="_blank" rel="external">http://127.0.0.1:1024</a> 就是这个样子的：</p>
+<p><img src="https://camo.githubusercontent.com/813c1698e040f3b29cd92f763e6ce1e2dd29c03f/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323831303139323130342e6a7067" alt="laravel5"></p>
+<p>我在本地 hosts 中绑定了 fuck.io 到 127.0.0.1，所以截图中我的域名是 fuck.io 而不是 127.0.0.1，其实他们是完全等价的。</p>
+<p>这时候你可能要问了：为什么本宝宝的页面是一片空白？请使用开发者工具查看网络请求，只要是 200 状态就说明运行成功了，空白是因为这个页面引用了 Google Fonts，你懂的~</p>
+<p>至于为什么选择 1024 端口？因为他是 *UNIX 系统动态端口的开始，是我们不需要 root 权限就可以随意监听的数值最小的端口。</p>
+<p>另外，建议不熟悉 PHP 运行环境搭建的宝宝们不要轻易尝试使用 Apache 或 Nginx 驱动 Laravel，特别是在开启了 SELinux 的 Linux 系统上跑。关于 Laravel 在 Linux 上部署的大坑，本宝宝可能要单写一篇长文分享给宝宝们。</p>
+<h4 id="3-体验牛逼闪闪的-Auth-系统"><a href="#3-体验牛逼闪闪的-Auth-系统" class="headerlink" title="3. 体验牛逼闪闪的 Auth 系统"></a>3. 体验牛逼闪闪的 Auth 系统</h4><p>Laravel 利用 PHP5.4 的新特性 trait 内置了非常完善好用的简单用户登录注册功能，适合一些不需要复杂用户权限管理的系统，例如公司内部用的简单管理系统。</p>
+<p>激活这个功能非常容易，运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:auth</div></pre></td></tr></table></figure>
+<p>访问 <a href="http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：" target="_blank" rel="external">http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：</a><br><img src="https://camo.githubusercontent.com/1c989f7363771f11d916c5112066f3839b3a88aa/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323936353739343437372e6a7067" alt="login"></p>
+<ol>
+<li>连接数据库</li>
+</ol>
+<p>接下来我们要连接数据库了，请自行准备好 MySQL 服务哦。</p>
+<h5 id="a-修改配置"><a href="#a-修改配置" class="headerlink" title="a. 修改配置"></a>a. 修改配置</h5><p>不出意外的话，learnlaravel5 目录下已经有了一个 .env 文件，如果没有，可以复制一份 .env.example 文件重命名成 .env，修改下面几行的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DB_HOST=127.0.0.1</div><div class="line">DB_PORT=3306</div><div class="line">DB_DATABASE=laravel5</div><div class="line">DB_USERNAME=root</div><div class="line">DB_PASSWORD=root</div></pre></td></tr></table></figure>
+<p>推荐新建一个名为 laravel5 的数据库，并且使用 root 账户直接操作，降低学习数据库的成本。</p>
+<p>数据库配置好之后，在登录界面填写任意邮箱和密码，点击 Login，你应该会得到以下画面：<br><img src="https://camo.githubusercontent.com/8abbf525301bd53ec10368258e38e69b0174bd42/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032303236323138312e6a7067" alt="error"></p>
+<p>它说 users 表不存在呀，接下来我们将见识 Laravel 另外一个实用特性。</p>
+<h5 id="b-进行数据库迁移（migration）"><a href="#b-进行数据库迁移（migration）" class="headerlink" title="b. 进行数据库迁移（migration）"></a>b. 进行数据库迁移（migration）</h5><p>运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>我们得到了如下结果：</p>
+<p><img src="https://camo.githubusercontent.com/2e3c07b19fca3a3be7eb994beccbf2e44d1e3671/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032323136393039342e6a7067" alt="result"></p>
+<p>数据库迁移成功！赶快打开 <a href="http://fuck.io:1024/home" target="_blank" rel="external">http://fuck.io:1024/home</a> 注册一个用户试试吧~</p>
+<p>下图是本宝宝注册了一个 username 为 1 用户：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14623689497675.jpg" alt="user1"></p>
+<h5 id="c-migration-是啥？"><a href="#c-migration-是啥？" class="headerlink" title="c. migration 是啥？"></a>c. migration 是啥？</h5><p>打开 <code>learnlaravel5/database/migrations/2014_10_12_000000_create_users_table.php</code>文件，你肯定能一眼看出它的作用：用 PHP 描述数据库构造，并且使用命令行一次性部署所有数据库结构。</p>
+<h4 id="5-使用-Laravel-的“葵花宝典”：Eloquent"><a href="#5-使用-Laravel-的“葵花宝典”：Eloquent" class="headerlink" title="5. 使用 Laravel 的“葵花宝典”：Eloquent"></a>5. 使用 Laravel 的“葵花宝典”：Eloquent</h4><p>Eloquent 是 Laravel 的 ORM，是 Laravel 系统中最强大的地方，没有之一。当初 Laravel 作者在开发第一版的时候花了整整三分之一的时间才搞出来 Eloquent。当然，“欲练此功，必先自宫”，Eloquent 也是 Laravel 中最慢的地方，迄今无法解决。（路由、自动载入、配置分散、视图引发的性能问题都通过缓存几乎彻底解决了）</p>
+<p>当然，我们还是要承袭第一版教程中对 Eloquent ORM 的描述：鹅妹子英！</p>
+<h5 id="a-Eloquent-是什么"><a href="#a-Eloquent-是什么" class="headerlink" title="a. Eloquent 是什么"></a>a. Eloquent 是什么</h5><p>Eloquent 是 Laravel 内置的 ORM 系统，我们的 Model 类将继承自 Eloquent 提供的 Model 类，然后，就天生具备了数十个异常强大的函数，从此想干啥事儿都是一行代码就搞定。</p>
+<h5 id="b-怎么用？"><a href="#b-怎么用？" class="headerlink" title="b. 怎么用？"></a>b. 怎么用？</h5><p>我们使用 Artisan 工具新建 Model 类及其附属的 Migration 和 Seeder（数据填充）类。</p>
+<p>运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
+<p>去看看你的 app 目录，下面是不是多了一个 Article.php 文件？那就是 Artisan 帮我们生成的 Model 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App;</div><div class="line"></div><div class="line">use Illuminate\Database\Eloquent\Model;</div><div class="line"></div><div class="line">class Article extends Model</div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如此简洁有力的代码，隐藏了背后极高的难度和巨大的复杂度，让我们闭上眼睛，静静地感受 Laravel 的优雅吧 (～￣▽￣)～</p>
+<h3 id="6-使用-Migration-和-Seeder"><a href="#6-使用-Migration-和-Seeder" class="headerlink" title="6. 使用 Migration 和 Seeder"></a>6. 使用 Migration 和 Seeder</h3><p>接下来我们生成对应 Article 这个 Model 的 Migration 和 Seeder。</p>
+<h5 id="a-使用-artisan-生成-Migration"><a href="#a-使用-artisan-生成-Migration" class="headerlink" title="a. 使用 artisan 生成 Migration"></a>a. 使用 artisan 生成 Migration</h5><p>在 learnlaravel5 目录下运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_article_table</div></pre></td></tr></table></figure>
+<p>成功之后打开 <code>learnlaravel5/database/migrations</code>，你会发现有一个名为 2<strong>*</strong>_create_article_table 的文件被创建了。我们修改他的 up 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public function up()</div><div class="line">&#123;</div><div class="line">    Schema::create(&apos;articles&apos;, function(Blueprint $table)</div><div class="line">    &#123;</div><div class="line">        $table-&gt;increments(&apos;id&apos;);</div><div class="line">        $table-&gt;string(&apos;title&apos;);</div><div class="line">        $table-&gt;text(&apos;body&apos;)-&gt;nullable();</div><div class="line">        $table-&gt;integer(&apos;user_id&apos;);</div><div class="line">        $table-&gt;timestamps();</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这几行代码描述的是 Article 对应的数据库中那张表的结构。Laravel 默认 Model 对应的表名是这个英文单词的复数形式，在这里，就是 articles。接下来让我们把 PHP 代码变成真实的 MySQL 中的数据表，运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>执行成功后，articles 表已经出现在数据库里了：</p>
+<p><img src="https://camo.githubusercontent.com/a7675080d45339266815b2802e11d685f97c777a/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373137313131323931372e6a7067" alt="article"></p>
+<h5 id="b-使用-artisan-生成-Seeder"><a href="#b-使用-artisan-生成-Seeder" class="headerlink" title="b. 使用 artisan 生成 Seeder"></a>b. 使用 artisan 生成 Seeder</h5><p>Seeder 是我们接触到的一个新概念，字面意思为播种机。Seeder 解决的是我们在开发 web 应用的时候，需要手动向数据库中填入假数据的繁琐低效问题。</p>
+<p>运行以下命令创建 Seeder 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:seeder ArticleSeeder</div></pre></td></tr></table></figure>
+<p>我们会发现 learnlaravel5/database/seeds 里多了一个文件 ArticleSeeder.php，修改此文件中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    DB::table(&apos;articles&apos;)-&gt;delete();</div><div class="line"></div><div class="line">    for ($i=0; $i &lt; 10; $i++) &#123;</div><div class="line">        \App\Article::create([</div><div class="line">            &apos;title&apos;   =&gt; &apos;Title &apos;.$i,</div><div class="line">            &apos;body&apos;    =&gt; &apos;Body &apos;.$i,</div><div class="line">            &apos;user_id&apos; =&gt; 1,</div><div class="line">        ]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们把 ArticleSeeder 注册到系统内。修改 <code>learnlaravel5/database/seeds/DatabaseSeeder.php</code>中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    $this-&gt;call(ArticleSeeder::class);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于 database 目录没有像 app 目录那样被 composer 注册为 psr-4 自动加载，采用的是 psr-0 classmap 方式，所以我们还需要运行以下命令把<code>ArticleSeeder.php</code>加入自动加载系统，避免找不到类的错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer dump-autoload</div></pre></td></tr></table></figure>
+<p>然后执行 seed：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan db:seed</div></pre></td></tr></table></figure>
+<p>你应该得到如下结果：<br><img src="https://camo.githubusercontent.com/629b71dcd42b94825e9075b5eaada4758b083dbd/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373330353231313336362e6a7067" alt="seed"><br>这时候刷新一下数据库中的 articles 表，会发现已经被插入了 10 行假数据：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14627305849059.jpg" alt="data"></p>
+<h4 id="原文：https-github-com-johnlui-Learn-Laravel-5-issues-4"><a href="#原文：https-github-com-johnlui-Learn-Laravel-5-issues-4" class="headerlink" title="原文：https://github.com/johnlui/Learn-Laravel-5/issues/4"></a>原文：<a href="https://github.com/johnlui/Learn-Laravel-5/issues/4" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5/issues/4</a></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本教程示例代码见：&lt;a href=&quot;https://github.com/johnlui/Learn-Laravel-5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/johnlui/Lear
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="laravel" scheme="https://jeristiano.github.io/tags/laravel/"/>
+    
+  </entry>
   
   <entry>
     <title>蔡氏效应</title>
