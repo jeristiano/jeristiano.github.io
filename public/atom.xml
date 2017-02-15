@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jeremy&#39;s space</title>
+  <subtitle>Don&#39;t be evil</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://jeristiano.github.io/"/>
+  <updated>2017-02-14T05:55:08.575Z</updated>
+  <id>https://jeristiano.github.io/</id>
+  
+  <author>
+    <name>jeremyK</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GIT常用命令备忘</title>
+    <link href="https://jeristiano.github.io/2017/02/14/GIT%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98/"/>
+    <id>https://jeristiano.github.io/2017/02/14/GIT常用命令备忘/</id>
+    <published>2017-02-14T05:18:50.000Z</published>
+    <updated>2017-02-14T05:55:08.575Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载:原文出处<a href="http://stormzhang.com/git/2014/01/27/git-common-command/" target="_blank" rel="external">http://stormzhang.com/git/2014/01/27/git-common-command/</a></p>
+</blockquote>
+<h3 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;storm&quot;</div><div class="line">git config --global user.email &quot;stormzhang.dev@gmail.com&quot;</div><div class="line">git config --global color.ui true</div><div class="line">git config --global alias.co checkout  # 别名</div><div class="line">git config --global alias.ci commit</div><div class="line">git config --global alias.st status</div><div class="line">git config --global alias.br branch</div><div class="line">git config --global core.editor &quot;vim&quot;  # 设置Editor使用vim</div><div class="line">git config --global core.quotepath false # 设置显示中文文件名</div></pre></td></tr></table></figure>
+<p><code>用户的git配置文件~/.gitconfig</code></p>
+<h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><p><code>查看、添加、提交、删除、找回，重置修改文件</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">git help &lt;command&gt;  # 显示command的help</div><div class="line">git show            # 显示某次提交的内容</div><div class="line">git show $id</div><div class="line"></div><div class="line">git co  -- &lt;file&gt;   # 抛弃工作区修改</div><div class="line">git co  .           # 抛弃工作区修改</div><div class="line"></div><div class="line">git add &lt;file&gt;      # 将工作文件修改提交到本地暂存区</div><div class="line">git add .           # 将所有修改过的工作文件提交暂存区</div><div class="line"></div><div class="line">git rm &lt;file&gt;       # 从版本库中删除文件</div><div class="line">git rm &lt;file&gt; --cached  # 从版本库中删除文件，但不删除文件</div><div class="line"></div><div class="line">git reset &lt;file&gt;    # 从暂存区恢复到工作文件</div><div class="line">git reset -- .      # 从暂存区恢复到工作文件</div><div class="line">git reset --hard    # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</div><div class="line"></div><div class="line">git ci &lt;file&gt;</div><div class="line">git ci .</div><div class="line">git ci -a           # 将git add, git rm和git ci等操作都合并在一起做</div><div class="line">git ci -am &quot;some comments&quot;</div><div class="line">git ci --amend      # 修改最后一次提交记录</div><div class="line"></div><div class="line">git revert &lt;$id&gt;    # 恢复某次提交的状态，恢复动作本身也创建了一次提交对象</div><div class="line">git revert HEAD     # 恢复最后一次提交的状态</div></pre></td></tr></table></figure>
+<p><code>查看文件diff</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git diff &lt;file&gt;     # 比较当前文件和暂存区文件差异</div><div class="line">git diff</div><div class="line">git diff &lt;$id1&gt; &lt;$id2&gt;   # 比较两次提交之间的差异</div><div class="line">git diff &lt;branch1&gt;..&lt;branch2&gt; # 在两个分支之间比较 </div><div class="line">git diff --staged   # 比较暂存区和版本库差异</div><div class="line">git diff --cached   # 比较暂存区和版本库差异</div><div class="line">git diff --stat     # 仅仅比较统计信息</div></pre></td></tr></table></figure>
+<p><code>查看提交记录</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log</div><div class="line">git log &lt;file&gt;      # 查看该文件每次提交记录</div><div class="line">git log -p &lt;file&gt;   # 查看每次详细修改内容的diff</div><div class="line">git log -p -2       # 查看最近两次详细</div></pre></td></tr></table></figure>
+<p>tig</p>
+<p>Mac上可以使用tig代替diff和log，brew install tig</p>
+<h3 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h3><p><code>查看、切换、创建和删除分支</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">git br -r           # 查看远程分支</div><div class="line">git br &lt;new_branch&gt; # 创建新的分支</div><div class="line">git br -v           # 查看各个分支最后提交信息</div><div class="line">git br --merged     # 查看已经被合并到当前分支的分支</div><div class="line">git br --no-merged  # 查看尚未被合并到当前分支的分支</div><div class="line"></div><div class="line">git co &lt;branch&gt;     # 切换到某个分支</div><div class="line">git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</div><div class="line">git co -b &lt;new_branch&gt; &lt;branch&gt;  # 基于branch创建新的new_branch</div><div class="line"></div><div class="line">git co $id          # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</div><div class="line">git co $id -b &lt;new_branch&gt;  # 把某次历史提交记录checkout出来，创建成一个分支</div><div class="line"></div><div class="line">git br -d &lt;branch&gt;  # 删除某个分支</div><div class="line">git br -D &lt;branch&gt;  # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</div></pre></td></tr></table></figure>
+<p><code>分支合并和rebase</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git merge &lt;branch&gt;               # 将branch分支合并到当前分支</div><div class="line">git merge origin/master --no-ff  # 不要Fast-Foward合并，这样可以生成merge提交</div><div class="line"></div><div class="line">git rebase master &lt;branch&gt;       # 将master rebase到branch，相当于：</div><div class="line">git co &lt;branch&gt; &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge &lt;branch&gt;</div></pre></td></tr></table></figure>
+<p><code>Git补丁管理(方便在多台机器上开发同步时用)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git diff &gt; ../sync.patch         # 生成补丁</div><div class="line">git apply ../sync.patch          # 打补丁</div><div class="line">git apply --check ../sync.patch  # 测试补丁能否成功</div></pre></td></tr></table></figure>
+<p><code>Git暂存管理</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git stash                        # 暂存</div><div class="line">git stash list                   # 列所有stash</div><div class="line">git stash apply                  # 恢复暂存的内容</div><div class="line">git stash drop                   # 删除暂存区</div><div class="line">git stash clear</div></pre></td></tr></table></figure>
+<p><code>Git远程分支管理</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">git pull                         # 抓取远程仓库所有分支更新并合并到本地</div><div class="line">git pull --no-ff                 # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</div><div class="line">git fetch origin                 # 抓取远程仓库更新</div><div class="line">git merge origin/master          # 将远程主分支合并到本地当前分支</div><div class="line">git co --track origin/branch     # 跟踪某个远程分支创建相应的本地分支</div><div class="line">git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt;  # 基于远程分支创建本地分支，功能同上</div><div class="line"></div><div class="line">git push                         # push所有分支</div><div class="line">git push origin master           # 将本地主分支推到远程主分支</div><div class="line">git push -u origin master        # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</div><div class="line">git push origin &lt;local_branch&gt;   # 创建远程分支， origin是远程仓库名</div><div class="line">git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;  # 创建远程分支</div><div class="line">git push origin :&lt;remote_branch&gt;  #先删除本地分支(git br -d &lt;branch&gt;)，然后再push删除远程分支</div></pre></td></tr></table></figure>
+<p><code>Git远程仓库管理</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git remote -v                    # 查看远程服务器地址和仓库名称</div><div class="line">git remote show origin           # 查看远程服务器仓库状态</div><div class="line">git remote add origin git@github:stormzhang/demo.git         # 添加远程仓库地址</div><div class="line">git remote set-url origin git@github.com:stormzhang/demo.git # 设置远程仓库地址(用于修改远程仓库地址</div></pre></td></tr></table></figure>
+<p><code>创建远程仓库</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git clone --bare robbin_site robbin_site.git  # 用带版本的项目创建纯版本仓库</div><div class="line">scp -r my_project.git git@git.csdn.net:~      # 将纯仓库上传到服务器上</div><div class="line"></div><div class="line">mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git --bare init # 在服务器创建纯仓库</div><div class="line">git remote add origin git@github.com:robbin/robbin_site.git    # 设置远程仓库地址</div><div class="line">git push -u origin master                                      # 客户端首次提交</div><div class="line">git push -u origin develop  # 首次将本地develop分支提交到远程develop分支，并且track</div><div class="line"></div><div class="line">git remote set-head origin master   # 设置远程仓库的HEAD指向master分支</div></pre></td></tr></table></figure>
+<p><code>也可以命令设置跟踪远程库和本地库</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch --set-upstream master origin/master</div><div class="line">git branch --set-upstream develop origin/develop</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载:原文出处&lt;a href=&quot;http://stormzhang.com/git/2014/01/27/git-common-command/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stormzhang.c
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="git" scheme="https://jeristiano.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>laravel笔记之laravel 安装和数据迁移填充</title>
+    <link href="https://jeristiano.github.io/2017/02/10/laravel%E7%AC%94%E8%AE%B0%E4%B8%80-laravel-%E5%AE%89%E8%A3%85%E5%92%8C%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%A1%AB%E5%85%85/"/>
+    <id>https://jeristiano.github.io/2017/02/10/laravel笔记一-laravel-安装和数据迁移填充/</id>
+    <published>2017-02-10T08:58:44.000Z</published>
+    <updated>2017-02-10T09:06:43.114Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本教程示例代码见：<a href="https://github.com/johnlui/Learn-Laravel-5" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5</a></p>
+</blockquote>
+<p>在任何地方卡住，最快的办法就是去看示例代码。</p>
+<h3 id="开始学习"><a href="#开始学习" class="headerlink" title="开始学习"></a>开始学习</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>许多人被拦在了学习 Laravel 的第一步：安装。并不是因为安装有多复杂，而是因为【众所周知的原因】。在此我推荐一个 composer 全量中国镜像：<a href="http://pkg.phpcomposer.com/" target="_blank" rel="external">http://pkg.phpcomposer.com/</a> 。启用 Composer 镜像服务作为本教程的第一项小作业请自行完成哦。</p>
+<p>镜像配置完成后，在终端（Terminal 或 CMD）里切换到你想要放置该网站的目录下（如 C:\wwwroot、/Library/WebServer/Documents/、/var/www/html、/etc/nginx/html 等），运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel learnlaravel5 5.2.31</div></pre></td></tr></table></figure>
+<p>然后，稍等片刻，当前目录下就会出现一个叫 learnlaravel5 的文件夹，安装完成啦~</p>
+<h4 id="2-运行"><a href="#2-运行" class="headerlink" title="2.运行"></a>2.运行</h4><p>为了尽可能地减缓学习曲线，推荐宝宝们使用 PHP 内置 web 服务器驱动我们的网站。运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd learnlaravel5/public</div><div class="line">php -S 0.0.0.0:1024</div></pre></td></tr></table></figure>
+<p>这时候访问 <a href="http://127.0.0.1:1024" target="_blank" rel="external">http://127.0.0.1:1024</a> 就是这个样子的：</p>
+<p><img src="https://camo.githubusercontent.com/813c1698e040f3b29cd92f763e6ce1e2dd29c03f/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323831303139323130342e6a7067" alt="laravel5"></p>
+<p>我在本地 hosts 中绑定了 fuck.io 到 127.0.0.1，所以截图中我的域名是 fuck.io 而不是 127.0.0.1，其实他们是完全等价的。</p>
+<p>这时候你可能要问了：为什么本宝宝的页面是一片空白？请使用开发者工具查看网络请求，只要是 200 状态就说明运行成功了，空白是因为这个页面引用了 Google Fonts，你懂的~</p>
+<p>至于为什么选择 1024 端口？因为他是 *UNIX 系统动态端口的开始，是我们不需要 root 权限就可以随意监听的数值最小的端口。</p>
+<p>另外，建议不熟悉 PHP 运行环境搭建的宝宝们不要轻易尝试使用 Apache 或 Nginx 驱动 Laravel，特别是在开启了 SELinux 的 Linux 系统上跑。关于 Laravel 在 Linux 上部署的大坑，本宝宝可能要单写一篇长文分享给宝宝们。</p>
+<h4 id="3-体验牛逼闪闪的-Auth-系统"><a href="#3-体验牛逼闪闪的-Auth-系统" class="headerlink" title="3. 体验牛逼闪闪的 Auth 系统"></a>3. 体验牛逼闪闪的 Auth 系统</h4><p>Laravel 利用 PHP5.4 的新特性 trait 内置了非常完善好用的简单用户登录注册功能，适合一些不需要复杂用户权限管理的系统，例如公司内部用的简单管理系统。</p>
+<p>激活这个功能非常容易，运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:auth</div></pre></td></tr></table></figure>
+<p>访问 <a href="http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：" target="_blank" rel="external">http://fuck.io:1024/login，如果你本地已经科学上网，那就能看到以下页面：</a><br><img src="https://camo.githubusercontent.com/1c989f7363771f11d916c5112066f3839b3a88aa/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632323936353739343437372e6a7067" alt="login"></p>
+<ol>
+<li>连接数据库</li>
+</ol>
+<p>接下来我们要连接数据库了，请自行准备好 MySQL 服务哦。</p>
+<h5 id="a-修改配置"><a href="#a-修改配置" class="headerlink" title="a. 修改配置"></a>a. 修改配置</h5><p>不出意外的话，learnlaravel5 目录下已经有了一个 .env 文件，如果没有，可以复制一份 .env.example 文件重命名成 .env，修改下面几行的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DB_HOST=127.0.0.1</div><div class="line">DB_PORT=3306</div><div class="line">DB_DATABASE=laravel5</div><div class="line">DB_USERNAME=root</div><div class="line">DB_PASSWORD=root</div></pre></td></tr></table></figure>
+<p>推荐新建一个名为 laravel5 的数据库，并且使用 root 账户直接操作，降低学习数据库的成本。</p>
+<p>数据库配置好之后，在登录界面填写任意邮箱和密码，点击 Login，你应该会得到以下画面：<br><img src="https://camo.githubusercontent.com/8abbf525301bd53ec10368258e38e69b0174bd42/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032303236323138312e6a7067" alt="error"></p>
+<p>它说 users 表不存在呀，接下来我们将见识 Laravel 另外一个实用特性。</p>
+<h5 id="b-进行数据库迁移（migration）"><a href="#b-进行数据库迁移（migration）" class="headerlink" title="b. 进行数据库迁移（migration）"></a>b. 进行数据库迁移（migration）</h5><p>运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>我们得到了如下结果：</p>
+<p><img src="https://camo.githubusercontent.com/2e3c07b19fca3a3be7eb994beccbf2e44d1e3671/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632333032323136393039342e6a7067" alt="result"></p>
+<p>数据库迁移成功！赶快打开 <a href="http://fuck.io:1024/home" target="_blank" rel="external">http://fuck.io:1024/home</a> 注册一个用户试试吧~</p>
+<p>下图是本宝宝注册了一个 username 为 1 用户：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14623689497675.jpg" alt="user1"></p>
+<h5 id="c-migration-是啥？"><a href="#c-migration-是啥？" class="headerlink" title="c. migration 是啥？"></a>c. migration 是啥？</h5><p>打开 <code>learnlaravel5/database/migrations/2014_10_12_000000_create_users_table.php</code>文件，你肯定能一眼看出它的作用：用 PHP 描述数据库构造，并且使用命令行一次性部署所有数据库结构。</p>
+<h4 id="5-使用-Laravel-的“葵花宝典”：Eloquent"><a href="#5-使用-Laravel-的“葵花宝典”：Eloquent" class="headerlink" title="5. 使用 Laravel 的“葵花宝典”：Eloquent"></a>5. 使用 Laravel 的“葵花宝典”：Eloquent</h4><p>Eloquent 是 Laravel 的 ORM，是 Laravel 系统中最强大的地方，没有之一。当初 Laravel 作者在开发第一版的时候花了整整三分之一的时间才搞出来 Eloquent。当然，“欲练此功，必先自宫”，Eloquent 也是 Laravel 中最慢的地方，迄今无法解决。（路由、自动载入、配置分散、视图引发的性能问题都通过缓存几乎彻底解决了）</p>
+<p>当然，我们还是要承袭第一版教程中对 Eloquent ORM 的描述：鹅妹子英！</p>
+<h5 id="a-Eloquent-是什么"><a href="#a-Eloquent-是什么" class="headerlink" title="a. Eloquent 是什么"></a>a. Eloquent 是什么</h5><p>Eloquent 是 Laravel 内置的 ORM 系统，我们的 Model 类将继承自 Eloquent 提供的 Model 类，然后，就天生具备了数十个异常强大的函数，从此想干啥事儿都是一行代码就搞定。</p>
+<h5 id="b-怎么用？"><a href="#b-怎么用？" class="headerlink" title="b. 怎么用？"></a>b. 怎么用？</h5><p>我们使用 Artisan 工具新建 Model 类及其附属的 Migration 和 Seeder（数据填充）类。</p>
+<p>运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
+<p>去看看你的 app 目录，下面是不是多了一个 Article.php 文件？那就是 Artisan 帮我们生成的 Model 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App;</div><div class="line"></div><div class="line">use Illuminate\Database\Eloquent\Model;</div><div class="line"></div><div class="line">class Article extends Model</div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如此简洁有力的代码，隐藏了背后极高的难度和巨大的复杂度，让我们闭上眼睛，静静地感受 Laravel 的优雅吧 (～￣▽￣)～</p>
+<h3 id="6-使用-Migration-和-Seeder"><a href="#6-使用-Migration-和-Seeder" class="headerlink" title="6. 使用 Migration 和 Seeder"></a>6. 使用 Migration 和 Seeder</h3><p>接下来我们生成对应 Article 这个 Model 的 Migration 和 Seeder。</p>
+<h5 id="a-使用-artisan-生成-Migration"><a href="#a-使用-artisan-生成-Migration" class="headerlink" title="a. 使用 artisan 生成 Migration"></a>a. 使用 artisan 生成 Migration</h5><p>在 learnlaravel5 目录下运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_article_table</div></pre></td></tr></table></figure>
+<p>成功之后打开 <code>learnlaravel5/database/migrations</code>，你会发现有一个名为 2<strong>*</strong>_create_article_table 的文件被创建了。我们修改他的 up 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public function up()</div><div class="line">&#123;</div><div class="line">    Schema::create(&apos;articles&apos;, function(Blueprint $table)</div><div class="line">    &#123;</div><div class="line">        $table-&gt;increments(&apos;id&apos;);</div><div class="line">        $table-&gt;string(&apos;title&apos;);</div><div class="line">        $table-&gt;text(&apos;body&apos;)-&gt;nullable();</div><div class="line">        $table-&gt;integer(&apos;user_id&apos;);</div><div class="line">        $table-&gt;timestamps();</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这几行代码描述的是 Article 对应的数据库中那张表的结构。Laravel 默认 Model 对应的表名是这个英文单词的复数形式，在这里，就是 articles。接下来让我们把 PHP 代码变成真实的 MySQL 中的数据表，运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>执行成功后，articles 表已经出现在数据库里了：</p>
+<p><img src="https://camo.githubusercontent.com/a7675080d45339266815b2802e11d685f97c777a/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373137313131323931372e6a7067" alt="article"></p>
+<h5 id="b-使用-artisan-生成-Seeder"><a href="#b-使用-artisan-生成-Seeder" class="headerlink" title="b. 使用 artisan 生成 Seeder"></a>b. 使用 artisan 生成 Seeder</h5><p>Seeder 是我们接触到的一个新概念，字面意思为播种机。Seeder 解决的是我们在开发 web 应用的时候，需要手动向数据库中填入假数据的繁琐低效问题。</p>
+<p>运行以下命令创建 Seeder 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:seeder ArticleSeeder</div></pre></td></tr></table></figure>
+<p>我们会发现 learnlaravel5/database/seeds 里多了一个文件 ArticleSeeder.php，修改此文件中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    DB::table(&apos;articles&apos;)-&gt;delete();</div><div class="line"></div><div class="line">    for ($i=0; $i &lt; 10; $i++) &#123;</div><div class="line">        \App\Article::create([</div><div class="line">            &apos;title&apos;   =&gt; &apos;Title &apos;.$i,</div><div class="line">            &apos;body&apos;    =&gt; &apos;Body &apos;.$i,</div><div class="line">            &apos;user_id&apos; =&gt; 1,</div><div class="line">        ]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们把 ArticleSeeder 注册到系统内。修改 <code>learnlaravel5/database/seeds/DatabaseSeeder.php</code>中的 run 函数为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function run()</div><div class="line">&#123;</div><div class="line">    $this-&gt;call(ArticleSeeder::class);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于 database 目录没有像 app 目录那样被 composer 注册为 psr-4 自动加载，采用的是 psr-0 classmap 方式，所以我们还需要运行以下命令把<code>ArticleSeeder.php</code>加入自动加载系统，避免找不到类的错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer dump-autoload</div></pre></td></tr></table></figure>
+<p>然后执行 seed：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan db:seed</div></pre></td></tr></table></figure>
+<p>你应该得到如下结果：<br><img src="https://camo.githubusercontent.com/629b71dcd42b94825e9075b5eaada4758b083dbd/68747470733a2f2f646e2d6c7677656e68616e2d636f6d2e71626f782e6d652f323031362d30352d30392d31343632373330353231313336362e6a7067" alt="seed"><br>这时候刷新一下数据库中的 articles 表，会发现已经被插入了 10 行假数据：</p>
+<p><img src="http://7xlmi4.dl1.z0.glb.clouddn.com/2016-05-09-14627305849059.jpg" alt="data"></p>
+<h4 id="原文：https-github-com-johnlui-Learn-Laravel-5-issues-4"><a href="#原文：https-github-com-johnlui-Learn-Laravel-5-issues-4" class="headerlink" title="原文：https://github.com/johnlui/Learn-Laravel-5/issues/4"></a>原文：<a href="https://github.com/johnlui/Learn-Laravel-5/issues/4" target="_blank" rel="external">https://github.com/johnlui/Learn-Laravel-5/issues/4</a></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本教程示例代码见：&lt;a href=&quot;https://github.com/johnlui/Learn-Laravel-5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/johnlui/Lear
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="laravel" scheme="https://jeristiano.github.io/tags/laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>蔡氏效应</title>
+    <link href="https://jeristiano.github.io/2017/02/09/%E8%94%A1%E6%B0%8F%E6%95%88%E5%BA%94/"/>
+    <id>https://jeristiano.github.io/2017/02/09/蔡氏效应/</id>
+    <published>2017-02-09T09:21:46.000Z</published>
+    <updated>2017-02-09T09:30:38.572Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="蔡格尼克记忆效应"><a href="#蔡格尼克记忆效应" class="headerlink" title="蔡格尼克记忆效应"></a>蔡格尼克记忆效应</h2><p><strong>蔡格尼克记忆效应（Zeigarnik effect；又称蔡加尼克效应） 是一种记忆效应，指人们对于尚未处理完的事情，比已处理完成的事情印象更加深刻。 这个现象是由蔡格尼克通过实验得出的结论。</strong></p>
+<hr>
+<p><strong>实验背景</strong></p>
+<p>蔡格尼克记忆效应（Zeigarnik effect），又称为蔡加尼克效应、“契可尼效应”，是指人们天生有一种办事有始有终的驱动力，人们之所以会忘记已完成的工作，是因为欲完成的动机已经得到满足；如果工作尚未完成，这同一动机便使他对此留下深刻印象。</p>
+<p><img src="http://www.psychspace.com/psych/attachments/2013/11/17_201311211422071U61d.jpg" alt="蔡格尼克记忆效应"><br>Bluma Zeigarnik with her husband Albert Zeigarnik before arriving in Berlin.<br>The picture was taken in Kovno (now Kaunas), Lithuania, in 1919-1920.</p>
+<p>20世纪20年代德国心理学家Β.Β.蔡格尼克在一项记忆实验中发现的心理现象。她让被试者做22件简单的工作，如写下一首你喜欢的诗，从55倒数到17，把一些颜色和形状不同的珠子按一定的模式用线穿起来，等等。完成每件工作所需要的时间大体相等，一般为几分钟。在这些工作中，只有一半允许做完，另一半在没有做完时就受到阻止。允许做完和不允许做完的工作出现的顺序是随机排列的。做完实验后，在出乎被试意料的情况下，立刻让他回忆做了22件什么工作。结果是未完成的工作平均可回忆68%，而已完成的工作只能回忆43%。在上述条件下，未完成的工作比已完成的工作保持得较好，这种现象就叫蔡格尼克效应.</p>
+<hr>
+<p><strong>结论应用</strong></p>
+<p>很多人有与生俱来的完成欲。要做的事一日不完结，一日不得解脱。蔡格尼克效应使人走入两个极端：一个是过分强迫，面对任务非得一气呵成，不完成便死抓着不放手，甚至偏执地将其他任何人事物置身事外；另一端是驱动力过弱，做任何事都拖沓啰嗦，时常半途而废，总是不把一件事情完全完成后再转移目标，永远无法彻底地完成一件事情。<br>对大多数人来说，蔡格尼克效应是推动我们完成工作的重要驱动力。但是有些人会走向极端，要么因为拖拉永远也完不成一件事，要么非得一口气把事做完不可。这两种人都需要调整他们的完成驱动力。<br>一个从不把工作做完的人，至少能够扩展自己的生活，而且可能生活得丰富多彩；但是一个非把每件事都做完不可的人，驱动力过强，可能导致生活没有规律、太紧张、太狭窄。只有减弱过强的驱动力，才可以使人一面做事一面享受人生乐趣。在工作方面，不做完不罢休的人可能是个工作狂。如果把这种态度缓和一下，不仅使你能在周末离开办公室，你还有时间去应付因工作狂带来的问题：自我怀疑，感觉自己能力不够或不能应付紧张等等。<br>非做完不可的人为了避免半途而废，很可能冒把自己封死在一份没有前途的工作上的危险。兴趣一旦变成狂热，就可能是一个警告信号，表示过分强烈的完成驱动力正在渐渐主宰你的消遣活动。</p>
+<hr>
+<p><strong>相关实例</strong><br>信写了一半，圆珠笔突然不出水了，是随手拿起另一支笔继续写下去还是四处找一支颜色相同的笔，在寻找时思路又转到别的方面去了，而丢下没的信不理？或者，是否被一本间谍小说迷住了，哪怕明天早上有一个重要会议，也要读到凌晨4点仍不释卷？<br>之所以出现这种现象，是因为人们天生有一种办事有始有终的驱动力。请试画一个圆圈，在最后留下一个小缺口，请你这时候再看它一眼，你的心思会倾向于要把这个圆完成。</p>
+<p><img src="http://cms.csdnimg.cn/article/201403/28/5334f3925d387_middle.jpg?_=46382" alt="不做“工作狂”"></p>
+<p>一个人做事半途而废，也许只是因为害怕失败。他永远不去把一件作品完成，以避免受到批评；同样，只愿永远当学生而不想毕业的人，也许是因为这样就可不必到社会上去工作；也可能由于他在潜意识中就不相信自己会成功，于是害怕成功，因此也就下意识地逃避成功。</p>
+<p>泰克医生为有这样心理的人提出一个解决的方法，他说：“如果你精力集中的时间限度是10分钟，而工作要一小时才能做完，那么，你的脑筋一开始散漫你就要停止工作，然后用三分钟的时间活动筋骨，例如跳几下，去倒一杯水，或是做些静力锻炼的肌肉运动；活动过后，再把另一个10分钟花在工作上。”<br>一个从不把工作做完的人，至少能够扩展自己的生活，而且可能生活得丰富多彩，但是一个非把每件事都做完不可的人，驱动力过强，可能导致生活没有规律、太紧张、太狭窄。</p>
+<hr>
+<p><strong>原因解释</strong></p>
+<p>为什么人们对未完成的工作的回忆量会优于已完成的工作?有人认为这是由于未完成的工作引起了情绪上的震动。但如果我们把工作用三种方式处理：第一种是允许其完成，第二种是我们中途加以阻止使它们最终没有完成，第三种是中途加以阻止后我们再让其完成。<strong>结果发现，人们对中途被阻止后再完成的工作的回忆量要优于前两种情况</strong>。而这就不能用中途阻止所产生的情绪所致来解释了，或许我们可以用心理的紧张系统是否得到解除来加以说明。未完成工作所引起的心理紧张系统还没有得到解除，因而回忆量相对大。中途加以阻止的未完成的工作不仅易于回忆，并且在做了其他工作之后，还有继续完成它的趋势。人们对于尚未处理完的事情会有较强烈的去完成它的动机，所以记忆自然也会较为深刻。</p>
+<p>工作和生活当中也是如此，你可能对于你目前正在做，但还没完成的事情记忆最深刻，对于已经完成的一些事情或许就不会给予太多关注了。其实这也符合人们的记忆规律，人的大脑总是记住一些需要加工的内容，将之放在工作记忆中，就像是电脑的内存一样，而对于已经完成或将要完成的内容大脑则会有意地去遗忘</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;蔡格尼克记忆效应&quot;&gt;&lt;a href=&quot;#蔡格尼克记忆效应&quot; class=&quot;headerlink&quot; title=&quot;蔡格尼克记忆效应&quot;&gt;&lt;/a&gt;蔡格尼克记忆效应&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;蔡格尼克记忆效应（Zeigarnik effect；又称蔡加尼克效应） 是一
+    
+    </summary>
+    
+      <category term="杂谈" scheme="https://jeristiano.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="蔡氏效应" scheme="https://jeristiano.github.io/tags/%E8%94%A1%E6%B0%8F%E6%95%88%E5%BA%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>时间的朋友</title>
+    <link href="https://jeristiano.github.io/2017/02/08/friend-of-time/"/>
+    <id>https://jeristiano.github.io/2017/02/08/friend-of-time/</id>
+    <published>2017-02-08T13:39:18.000Z</published>
+    <updated>2017-02-10T06:52:15.343Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>updated at 2017-02-10<br>pubulished at 2017-02-08</p>
+</blockquote>
+<ul>
+<li>小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这条河里的浮沉和你没有任何关系.</li>
+<li>巴菲的的合伙人查理芒格讲:宏观是我们必须承受的,微观才是我们有所作为的地方</li>
+<li>移动互联网的红利已经结束,流量已经被BAT瓜分干净</li>
+<li>什么样的人会被人工智能所替代呢? 答案是:只要你的技能是某种特定的领域,那么你迟早会被替代</li>
+<li>在美国大概有40%的工作岗位会被人工智能替代,而中国会有70%.</li>
+<li>什么样的人不会被人工智能替代?只要你的领导力和创造力突出你就可能不会被替代.</li>
+<li>我们都认为进步是好,但是比进步更好的是缓慢的进步(人工智能带来的冲击)</li>
+<li>你只需要抽出20%的时间去了解一个领域80%的知识就足够了(财新网主编王朔)</li>
+<li>只是拥有一个专业的技能,结果就很可能被替代,未来与人工智能博弈比的是跨界的能力,就像一个游牧民族,哪里有丰富的水草就游牧到哪里.</li>
+<li>两年前我们糊里糊涂的融了资，然后变成必须以上市为目的公司，……然后发现资本市场找你要的不是钱，也不是生意，他要的是两个字，叫做<strong>增长</strong>。就是你的钱要月挣越多才行，挣很多不行，后来发现他找你要的是不是增长，是<strong>持续</strong>的增长，增长的速度要越来越快，到后来我发现，不对，不对 他要的根本不是增长速度，而是<strong>你的增长速度要超过预期</strong>。老天爷，我现在不管有多好，他们都要求更好，比预期的还好，这是一个什么日子？</li>
+<li>我们从小就被灌输一种观念，等我有钱了，有关系了，有资源了，我就可以过的好。那天看二手房，我知道一个道理，无论你有多少钱，多少资源，有些人就有这个能力，仍然过不好这一生。（那些人指的是富人，但是过的并不体面，不讲卫生。）</li>
+<li>我们这一生想过的好，跟资源并没有多大关系，一切都是自我。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;updated at 2017-02-10&lt;br&gt;pubulished at 2017-02-08&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://jeristiano.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="罗辑思维" scheme="https://jeristiano.github.io/tags/%E7%BD%97%E8%BE%91%E6%80%9D%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>laravel数据库以及CURD</title>
+    <link href="https://jeristiano.github.io/2017/02/08/laravel-not/"/>
+    <id>https://jeristiano.github.io/2017/02/08/laravel-not/</id>
+    <published>2017-02-08T06:23:52.000Z</published>
+    <updated>2017-02-08T06:50:13.895Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="db-facade-原始查找"><a href="#db-facade-原始查找" class="headerlink" title="db facade(原始查找)"></a>db facade(原始查找)</h3><blockquote>
+<p>使用facade就是使用原始的sql语句来查询修改数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DB::select(&apos;sql 语句&apos;)</div><div class="line">DB::insert(&apos;insert into student (name,age) values(?,?),[&apos;jeremy&apos;,22]&apos;)</div><div class="line">DB::update(&apos;sql 语句&apos;)</div><div class="line">DB::delete(&apos;sql 语句&apos;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="查询构造器"><a href="#查询构造器" class="headerlink" title="查询构造器"></a>查询构造器</h3><blockquote>
+<p>使用laravel操作数据库的必备技能</p>
+</blockquote>
+<h4 id="查询构造器简介及新增数据"><a href="#查询构造器简介及新增数据" class="headerlink" title="查询构造器简介及新增数据"></a>查询构造器简介及新增数据</h4><ul>
+<li>larevel查询构造器(query bulider)提供方便/流畅的接口,用来建立及执行数据库查找语句</li>
+<li>使用PDO 参数绑定,以保护应用程序免于sql注入因此传入的参数不需额外转意特殊字符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//插入新数组返回bool</div><div class="line">DB::table(&apos;tablename&apos;)-&gt;insert([&apos;age&apos;=&gt;18,&apos;name&apos;=&gt;&apos;jeremy&apos;])</div><div class="line">//插入新数据得到自增id</div><div class="line">DB::table(&apos;tablename&apos;)-&gt;insertGetId([&apos;age&apos;=&gt;18,&apos;name&apos;=&gt;&apos;jeremy&apos;])</div><div class="line">//一次插入多个数据数组</div><div class="line"> DB::table(&apos;tablename&apos;)-&gt;insert([</div><div class="line">		 &apos;age&apos;=&gt;18,&apos;name&apos;=&gt;&apos;jeremy1&apos;],</div><div class="line">		 &apos;age&apos;=&gt;19,&apos;name&apos;=&gt;&apos;jeremy2&apos;],</div><div class="line">		 &apos;age&apos;=&gt;17,&apos;name&apos;=&gt;&apos;jeremy3&apos;],</div><div class="line">		 &apos;age&apos;=&gt;16,&apos;name&apos;=&gt;&apos;jeremy4&apos;],</div><div class="line">		 )</div></pre></td></tr></table></figure>
+<h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">	-&gt;where(&apos;id&apos;,12)</div><div class="line">	-&gt;update([&apos;age&apos;=&gt;30])</div></pre></td></tr></table></figure>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">	-&gt;where(&apos;id&apos;,&apos;&gt;=&apos;,12)</div><div class="line">	-&gt;delete()</div></pre></td></tr></table></figure>
+<h4 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//获得所有数据</div><div class="line">DB::table(&apos;tablename&apos;)-&gt;get();</div><div class="line">//返回第一条记录</div><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">-&gt;orderBy(&apos;id&apos;,&apos;desc&apos;)</div><div class="line">-&gt;first();</div><div class="line">//返回结果结果集中某个字段pluck</div><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">-&gt;orderBy(&apos;id&apos;,&apos;desc&apos;)</div><div class="line">-&gt;pluck(&apos;name&apos;);</div><div class="line">//返回结果结果集中制定的字段并使用某个键为下标</div><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">-&gt;orderBy(&apos;id&apos;,&apos;desc&apos;)</div><div class="line">-&gt;lists(&apos;name&apos;,&apos;id&apos;);</div><div class="line"></div><div class="line">//select查询</div><div class="line">DB::table(&apos;tablename&apos;)</div><div class="line">-&gt;select(&apos;id&apos;,&apos;name&apos;,&apos;age&apos;)</div><div class="line">-&gt;get();</div><div class="line">//chunk 每次查询n个数据并回调</div><div class="line">DB::table(&apos;tablename&apos;)-&gt;chunk(1000,function($res)&#123;	</div><div class="line">	if($res)&#123;</div><div class="line">	return false;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Eloquent-ORM-Object-Relational-Model"><a href="#Eloquent-ORM-Object-Relational-Model" class="headerlink" title="Eloquent ORM(Object Relational Model )"></a>Eloquent ORM(Object Relational Model )</h3><blockquote>
+<p>操作laravel数据库最常用的方式</p>
+</blockquote>
+<ul>
+<li>Laravel 所自带的Eloquent ORM是一哥优美 简洁的ActiveRecord实现,用来实现数据库操作</li>
+<li>每个数据表都有一个与之对应的’模型(Model)’ 用于和数据表交互</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Model</span></span>&#123;</div><div class="line">	 <span class="comment">//模型与数据库表关联</span></div><div class="line">	<span class="keyword">protected</span> $table=<span class="string">'student'</span>;</div><div class="line">	<span class="comment">//指定id</span></div><div class="line">	<span class="keyword">protected</span> $primaryKey=<span class="string">'id'</span>;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>查询方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回所有集合对象</span></div><div class="line">$res = student::all();</div><div class="line"><span class="comment">//返回一个集合对象</span></div><div class="line">$res = student::find(<span class="number">1001</span>);</div><div class="line"><span class="comment">//findOrFail查询不到抛出异常</span></div><div class="line">$res = student::findOrFail(<span class="number">1001</span>);</div></pre></td></tr></table></figure>
+<p><code>查询构造器的使用</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//查询所有</div><div class="line">Student::get();</div><div class="line">//查询一条</div><div class="line">Student::where(&apos;id&apos;,&apos;&gt;&apos;,&apos;1001&apos;)</div><div class="line">-&gt;orderBy(&apos;id&apos;)</div><div class="line">-&gt;first();</div><div class="line">//查询n条</div><div class="line">Student::where(&apos;id&apos;,&apos;&gt;&apos;,&apos;1001&apos;)</div><div class="line">-&gt;orderBy(&apos;id&apos;)</div><div class="line">-&gt;chunk(2000,function($res)&#123;</div><div class="line">	var_dump($res)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>增加数据</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//此处不允许批量赋值</div><div class="line">Student::create(</div><div class="line">	[&apos;name&apos;=&gt;&apos;jeremy&apos;],</div><div class="line">	[&apos;age&apos;=&gt;12],</div><div class="line">	[&apos;sex&apos;=&gt;1],</div><div class="line">)</div><div class="line">//在模型出加上允许批量赋值的字段名字</div><div class="line">protected $fillable=[&apos;name&apos;,&apos;age&apos;]</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//没有该数据则新增此数据</div><div class="line">Student::firstOrCreate()</div><div class="line"></div><div class="line">//没有该数据调用save()后新增此数据</div><div class="line">Student::firstOrNew()-&gt;save();</div></pre></td></tr></table></figure>
+<p><code>修改数据</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//第一种</div><div class="line">$student=Student::find(1020);</div><div class="line">$student-&gt;name=&apos;jeremy&apos;;</div><div class="line">$student-&gt;save();</div><div class="line">//第二种</div><div class="line">Student::where(&apos;id&apos;,12)</div><div class="line">-&gt;update([&apos;name&apos;=&gt;&apos;jeremy&apos;]);</div></pre></td></tr></table></figure></p>
+<p><code>删除数据</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//通过模型删除</div><div class="line">$student= Student::find(1021);</div><div class="line">$student-&gt;delete();</div><div class="line">//通过主键删除</div><div class="line">Student::destroy(1020,1021);</div><div class="line"></div><div class="line">//通过条件删除</div><div class="line">Student::where(&apos;id&apos;,&apos;&gt;&apos;,1004)-delete();</div></pre></td></tr></table></figure></p>
+<p><code>pluck</code></p>
+<p>获取一列的值<br>若你想要获取一个包含单个字段值的数组，你可以使用 pluck 方法。在这个例子中，我们将取出 roles 数据表 title 字段的<br>数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$titles = DB::table(&apos;roles&apos;)-&gt;pluck(&apos;title&apos;);</div><div class="line">foreach ($titles as $title) &#123;</div><div class="line">echo $title;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你也可以在返回的数组中指定自定义的键值字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$roles = DB::table(&apos;roles&apos;)-&gt;pluck(&apos;title&apos;, &apos;name&apos;);</div><div class="line">foreach ($roles as $name =&gt; $title) &#123;</div><div class="line">echo $title;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;db-facade-原始查找&quot;&gt;&lt;a href=&quot;#db-facade-原始查找&quot; class=&quot;headerlink&quot; title=&quot;db facade(原始查找)&quot;&gt;&lt;/a&gt;db facade(原始查找)&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;使用facad
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="laravel" scheme="https://jeristiano.github.io/tags/laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows系统下安装Composer</title>
+    <link href="https://jeristiano.github.io/2017/02/08/firstblog/"/>
+    <id>https://jeristiano.github.io/2017/02/08/firstblog/</id>
+    <published>2017-02-08T05:25:28.000Z</published>
+    <updated>2017-02-08T06:50:22.183Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Composer介绍"><a href="#Composer介绍" class="headerlink" title="Composer介绍"></a>Composer介绍</h3><p>Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 不是一个包管理器。是的，它涉及 “packages” 和 “libraries”，但它在每个项目的基础上进行管理，在你项目的某个目录中（例如 vendor）进行安装。默认情况下它不会在全局安装任何东西。因此，这仅仅是一个依赖管理。</p>
+<pre><code>Composer下载
+下载地址：getcom poser.org    （去掉空格）
+中文镜像：phpcom poser.com  （去掉空格）
+</code></pre><p><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/195921o2z605a55amqa0sa.png" alt="enter image description here"><br><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200038h15g31yj3g81f1cw.png" alt="enter image description here"></p>
+<p>下载成功</p>
+<p><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200051x4vpp55tnvs22ijw.png" alt="enter image description here"></p>
+<p>准备安装软件，双击软件就可以安装此软件 默认安装装就可以了，并会自动搜索PHP.exe的安装路径。</p>
+<p><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200115pkkwe9i9irzkv3ca.png" alt="enter image description here"></p>
+<p>选择NEXT，稍等一会，下载相关组建<br><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200313dwreyedxfdasfjoz.png" alt="enter image description here"></p>
+<p>显示此页面表示安装完成！如果报错 就检查 PHP扩展的OpenSSL 有没有打开<br><img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200343xgdse66jstrh8jwj.png" alt="enter image description here"><br>验证是否成功。打开win+R -&gt; cmd 输入 composer,显示如下界面 表示安装成功！<img src="http://bbs.houdunwang.com/data/attachment/forum/201603/17/200400utwp9i3qaipka3w7.png" alt="enter image description here"></p>
+<h3 id="启用镜像服务的方式有两种："><a href="#启用镜像服务的方式有两种：" class="headerlink" title="启用镜像服务的方式有两种："></a>启用镜像服务的方式有两种：</h3><pre><code>系统全局配置： 即将配置信息添加到 Composer 的全局配置文件 config.json 中。
+单个项目配置： 将配置信息添加到某个项目的 composer.json 文件中。
+</code></pre><p>例1：修改 composer 的全局配置文件（推荐方式）<br>打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div></pre></td></tr></table></figure>
+<p>上述命令将会在当前项目中的 composer.json文件的末尾自动添加镜像的配置信息（你也可以自己手工添加）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  "repositories": &#123;</div><div class="line">  "packagist": &#123; </div><div class="line">   "type": "composer", </div><div class="line">   "url": "https://packagist.phpcomposer.com"</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以 laravel 项目的 composer.json 配置文件为例，执行上述命令后如下所示（注意最后几行）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot;: &quot;laravel/laravel&quot;,</div><div class="line">    &quot;description&quot;: &quot;The Laravel Framework.&quot;,</div><div class="line">    &quot;keywords&quot;: [</div><div class="line">        &quot;framework&quot;,</div><div class="line">        &quot;laravel&quot;</div><div class="line">    ],</div><div class="line">    &quot;license&quot;: &quot;MIT&quot;,</div><div class="line">    &quot;type&quot;: &quot;project&quot;,</div><div class="line">    &quot;require&quot;: &#123;</div><div class="line">        &quot;php&quot;: &quot;&gt;=5.5.9&quot;,</div><div class="line">        &quot;laravel/framework&quot;: &quot;5.2.*&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;require-dev&quot;: &#123;</div><div class="line">        &quot;fzaninotto/faker&quot;: &quot;~1.4&quot;,</div><div class="line">        &quot;mockery/mockery&quot;: &quot;0.9.*&quot;,</div><div class="line">        &quot;phpunit/phpunit&quot;: &quot;~4.0&quot;,</div><div class="line">        &quot;symfony/css-selector&quot;: &quot;2.8.*|3.0.*&quot;,</div><div class="line">        &quot;symfony/dom-crawler&quot;: &quot;2.8.*|3.0.*&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;autoload&quot;: &#123;</div><div class="line">        &quot;classmap&quot;: [</div><div class="line">            &quot;database&quot;</div><div class="line">        ],</div><div class="line">        &quot;psr-4&quot;: &#123;</div><div class="line">            &quot;App\\&quot;: &quot;app/&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;autoload-dev&quot;: &#123;</div><div class="line">        &quot;classmap&quot;: [</div><div class="line">            &quot;tests/TestCase.php&quot;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    &quot;scripts&quot;: &#123;</div><div class="line">        &quot;post-root-package-install&quot;: [</div><div class="line">            &quot;php -r \&quot;copy(&apos;.env.example&apos;, &apos;.env&apos;);\&quot;&quot;</div><div class="line">        ],</div><div class="line">        &quot;post-create-project-cmd&quot;: [</div><div class="line">            &quot;php artisan key:generate&quot;</div><div class="line">        ],</div><div class="line">        &quot;post-install-cmd&quot;: [</div><div class="line">            &quot;php artisan clear-compiled&quot;,</div><div class="line">            &quot;php artisan optimize&quot;</div><div class="line">        ],</div><div class="line">        &quot;pre-update-cmd&quot;: [</div><div class="line">            &quot;php artisan clear-compiled&quot;</div><div class="line">        ],</div><div class="line">        &quot;post-update-cmd&quot;: [</div><div class="line">            &quot;php artisan optimize&quot;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    &quot;config&quot;: &#123;</div><div class="line">        &quot;preferred-install&quot;: &quot;dist&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;repositories&quot;: &#123;</div><div class="line">        &quot;packagist&quot;: &#123;</div><div class="line">            &quot;type&quot;: &quot;composer&quot;,</div><div class="line">            &quot;url&quot;: &quot;https://packagist.phpcomposer.com&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//转换成中文镜像</div><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">//安装版本</div><div class="line">composer create-project laravel/laravel your-project-name 5.0.*</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Composer介绍&quot;&gt;&lt;a href=&quot;#Composer介绍&quot; class=&quot;headerlink&quot; title=&quot;Composer介绍&quot;&gt;&lt;/a&gt;Composer介绍&lt;/h3&gt;&lt;p&gt;Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="laravel" scheme="https://jeristiano.github.io/tags/laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://jeristiano.github.io/2017/02/07/hello-world/"/>
+    <id>https://jeristiano.github.io/2017/02/07/hello-world/</id>
+    <published>2017-02-07T07:57:26.707Z</published>
+    <updated>2017-02-08T01:50:51.490Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
