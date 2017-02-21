@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Jeremy&#39;s space</title>
+    <title>RT:截取中文字符串无乱码 | Jeremy&#39;s space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="jeremyK">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="UTF-8中文截取函数在PHP中，substr()函数截取带有中文字符串的话，可能会出现乱码，这是因为中西文一个字节所占有的字节数不一样，而substr的长度参数是按照字节去算的，在GB2312编码时，一个中文占2个字节，英文为1个字节，而在UTF-8编码当中，一个中文可能占有2个或3个字节，英文或半角标点占1字节。解决方法UTF-8编码的字符可能由1-3个字节组成，具体数目可以由第一个字节判断">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://jeristiano.github.io/2017/02/07/hello-world/index.html">
+<meta property="og:title" content="RT:截取中文字符串无乱码">
+<meta property="og:url" content="https://jeristiano.github.io/2017/02/21/截取中文字符串无乱码/index.html">
 <meta property="og:site_name" content="Jeremy's space">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-02-08T01:50:51.490Z">
+<meta property="og:description" content="UTF-8中文截取函数在PHP中，substr()函数截取带有中文字符串的话，可能会出现乱码，这是因为中西文一个字节所占有的字节数不一样，而substr的长度参数是按照字节去算的，在GB2312编码时，一个中文占2个字节，英文为1个字节，而在UTF-8编码当中，一个中文可能占有2个或3个字节，英文或半角标点占1字节。解决方法UTF-8编码的字符可能由1-3个字节组成，具体数目可以由第一个字节判断">
+<meta property="og:updated_time" content="2017-02-21T05:06:47.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="RT:截取中文字符串无乱码">
+<meta name="twitter:description" content="UTF-8中文截取函数在PHP中，substr()函数截取带有中文字符串的话，可能会出现乱码，这是因为中西文一个字节所占有的字节数不一样，而substr的长度参数是按照字节去算的，在GB2312编码时，一个中文占2个字节，英文为1个字节，而在UTF-8编码当中，一个中文可能占有2个或3个字节，英文或半角标点占1字节。解决方法UTF-8编码的字符可能由1-3个字节组成，具体数目可以由第一个字节判断">
 
     
     <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
@@ -85,14 +82,14 @@ Quick">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/02/07/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2017/02/21/截取中文字符串无乱码/" title="RT:截取中文字符串无乱码" itemprop="url">RT:截取中文字符串无乱码</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
 		
   <p class="article-time">
-    <time datetime="2017-02-07T07:57:26.707Z" itemprop="datePublished"> 发表于 2017-02-07</time>
+    <time datetime="2017-02-21T04:56:32.000Z" itemprop="datePublished"> 发表于 2017-02-21</time>
     
   </p>
 </header>
@@ -101,24 +98,26 @@ Quick">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-  
+		<p> UTF-8中文截取函数<br>在PHP中，substr()函数截取带有中文字符串的话，可能会出现乱码，这是因为中西文一个字节所占有的字节数不一样，而substr的长度参数是按照字节去算的，在GB2312编码时，一个中文占2个字节，英文为1个字节，而在UTF-8编码当中，一个中文可能占有2个或3个字节，英文或半角标点占1字节。<br>解决方法<br>UTF-8编码的字符可能由1-3个字节组成，具体数目可以由第一个字节判断出来。<br>第一个字节大于224的，它与它之后的2个字节一起组成一个UTF-8字符<br>第一个字节大于192小于224的，它与它之后的1个字节组成一个UTF-8字符，否则第一个字节本身就是一个英文字符（包括数字和一小部分标点符号）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$a=&quot;我是程序员&quot;;</div><div class="line">class Dx</div><div class="line">&#123;</div><div class="line"> </div><div class="line">   private $str;</div><div class="line">    public function msubstr($string,$start,$length)</div><div class="line">    &#123;</div><div class="line">        if(strlen($string)&gt;$length)</div><div class="line">        &#123;</div><div class="line">            $n=0;</div><div class="line">            $str=&quot;&quot;;</div><div class="line">            $len=$start+$length;</div><div class="line">            for($i=$start;$i&lt;$len;$i++)</div><div class="line">            &#123;</div><div class="line">                if(ord(substr($string,$n,1))&gt;224)</div><div class="line">                &#123;</div><div class="line">                    $str.=substr($string,$n,3);</div><div class="line">                    $n+=3;</div><div class="line">                    $i++;</div><div class="line">                &#125;</div><div class="line">                elseif(ord(substr($string,$n,1))&gt;192)</div><div class="line">                &#123;</div><div class="line">                    $str.=substr($string,$n,2);</div><div class="line">                    $i++;</div><div class="line">                &#125;</div><div class="line">                else</div><div class="line">                &#123;</div><div class="line">                    $str.=substr($string,$n,1);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return $str;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            return $string;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">    public function msub($string,$start,$length)</div><div class="line">    &#123;</div><div class="line">        if(strlen($string)&gt;$length)</div><div class="line">        &#123;</div><div class="line">            $str=&quot;&quot;;</div><div class="line">            $len=$start+$length;</div><div class="line">            for($i=$start;$i&lt;$len;$i++)</div><div class="line">            &#123;</div><div class="line">                if(ord(substr($string,$i,1))&gt;0xa0)</div><div class="line">                &#123;</div><div class="line">                    $str.=substr($string,$i,2);</div><div class="line">                    $i++;</div><div class="line">                &#125;</div><div class="line">                else</div><div class="line">                &#123;</div><div class="line">                    $str.=substr($string,$i,1);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return $str;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            return $string;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">$sub = new Dx();</div><div class="line">echo $sub-&gt;msubstr($a,0,8);//我是程序</div><div class="line">?&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">除了上面的方法，还可以使用mb_substr来解决，代码如下：</div><div class="line">&lt;?php</div><div class="line">$a=&quot;wo的name是中国！&quot;;</div><div class="line">echo mb_substr($a,0,9,&apos;UTF-8&apos;);//wo的name是中</div><div class="line">echo substr($a,0,15);//wo的name是中</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/编程/">编程</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/php基础/">php基础</a>
+  </div>
 
 </div>
 
@@ -126,7 +125,7 @@ Quick">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://jeristiano.github.io/2017/02/07/hello-world/" data-title="Hello World | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  <div data-url="https://jeristiano.github.io/2017/02/21/截取中文字符串无乱码/" data-title="RT:截取中文字符串无乱码 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -139,20 +138,20 @@ Quick">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/02/08/firstblog/" title="windows系统下安装Composer">
-  <strong>上一篇：</strong><br/>
-  <span>
-  windows系统下安装Composer</span>
+
+<div class="next">
+<a href="/2017/02/15/【译】放弃PHP的代价太大了/"  title="【译】放弃PHP的代价太高">
+ <strong>下一篇：</strong><br/> 
+ <span>【译】放弃PHP的代价太高
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/02/07/hello-world/" data-title="Hello World" data-url="https://jeristiano.github.io/2017/02/07/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="2017/02/21/截取中文字符串无乱码/" data-title="RT:截取中文字符串无乱码" data-url="https://jeristiano.github.io/2017/02/21/截取中文字符串无乱码/"></div>
 </section>
 
 
@@ -162,7 +161,7 @@ Quick">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ 
  
   </div>
 
