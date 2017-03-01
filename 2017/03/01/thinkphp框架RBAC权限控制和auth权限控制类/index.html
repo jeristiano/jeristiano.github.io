@@ -1,0 +1,563 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>thinkphp框架RBAC权限控制和auth权限控制类 | Jeremy&#39;s space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jeremyK">
+    
+
+    
+    <meta name="description" content="thinkphp框架RBAC权限控制和auth权限控制类去某家公司面试，技术面试官提出一个关于RBAC的问题，想了很久没能答上来，可想而知面试的结果会怎样，但问题仍然存在，什么是RBAC权限控制？
+回家后突然想起来，RBAC的英文Role Based Access Control 的缩写，中文是基于角色的权限管理，相比这个概念并不陌生，项目中权限管理是必不可少的一环，而公司框架本身早就封装好了该功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="thinkphp框架RBAC权限控制和auth权限控制类">
+<meta property="og:url" content="https://jeristiano.github.io/2017/03/01/thinkphp框架RBAC权限控制和auth权限控制类/index.html">
+<meta property="og:site_name" content="Jeremy's space">
+<meta property="og:description" content="thinkphp框架RBAC权限控制和auth权限控制类去某家公司面试，技术面试官提出一个关于RBAC的问题，想了很久没能答上来，可想而知面试的结果会怎样，但问题仍然存在，什么是RBAC权限控制？
+回家后突然想起来，RBAC的英文Role Based Access Control 的缩写，中文是基于角色的权限管理，相比这个概念并不陌生，项目中权限管理是必不可少的一环，而公司框架本身早就封装好了该功">
+<meta property="og:image" content="http://www.lyblog.net/usr/uploads/2014/09/image9.png">
+<meta property="og:image" content="http://baijunyao.com/Upload/image/ueditor/20160514/1463186682405819.jpg">
+<meta property="og:image" content="http://baijunyao.com/Upload/image/ueditor/20160504/1462291919136306.jpg">
+<meta property="og:image" content="http://baijunyao.com/Upload/image/ueditor/20160504/1462291929640930.jpg">
+<meta property="og:image" content="http://baijunyao.com/Upload/image/ueditor/20160504/1462291962384468.jpg">
+<meta property="og:image" content="http://baijunyao.com/Upload/image/ueditor/20160514/1463186286405414.jpg">
+<meta property="og:updated_time" content="2017-03-01T12:21:45.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="thinkphp框架RBAC权限控制和auth权限控制类">
+<meta name="twitter:description" content="thinkphp框架RBAC权限控制和auth权限控制类去某家公司面试，技术面试官提出一个关于RBAC的问题，想了很久没能答上来，可想而知面试的结果会怎样，但问题仍然存在，什么是RBAC权限控制？
+回家后突然想起来，RBAC的英文Role Based Access Control 的缩写，中文是基于角色的权限管理，相比这个概念并不陌生，项目中权限管理是必不可少的一环，而公司框架本身早就封装好了该功">
+<meta name="twitter:image" content="http://www.lyblog.net/usr/uploads/2014/09/image9.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jeremy&#39;s space" title="Jeremy&#39;s space"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jeremy&#39;s space">Jeremy&#39;s space</a></h1>
+				<h2 class="blog-motto">Stay Simple Stay Naive , Don&#39;t Be Evil</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/index">索引 | Index</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:jeristiano.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/01/thinkphp框架RBAC权限控制和auth权限控制类/" title="thinkphp框架RBAC权限控制和auth权限控制类" itemprop="url">thinkphp框架RBAC权限控制和auth权限控制类</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-01T11:41:07.000Z" itemprop="datePublished"> 发表于 2017-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#thinkphp框架RBAC权限控制和auth权限控制类"><span class="toc-number">1.</span> <span class="toc-text">thinkphp框架RBAC权限控制和auth权限控制类</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="thinkphp框架RBAC权限控制和auth权限控制类"><a href="#thinkphp框架RBAC权限控制和auth权限控制类" class="headerlink" title="thinkphp框架RBAC权限控制和auth权限控制类"></a>thinkphp框架RBAC权限控制和auth权限控制类</h2><p>去某家公司面试，技术面试官提出一个关于RBAC的问题，想了很久没能答上来，可想而知面试的结果会怎样，但问题仍然存在，什么是RBAC权限控制？</p>
+<p>回家后突然想起来，RBAC的英文Role Based Access Control 的缩写，中文是基于角色的权限管理，相比这个概念并不陌生，项目中权限管理是必不可少的一环，而公司框架本身早就封装好了该功能，实际开发中很少会二次开发，因此有些生疏。回去查了资料，得知TP框架中的RBAC类是3.1支持的写法，到了更优秀的版本3.2后，TP官方去除了此方法，封装了一个更加简洁的类（auth类）。看到这就不再陌生了，因为我一开始接触的TP版本就是3.2，很早以前使用过auth类，并不陌生，真是有点好笑，只知诸葛亮，不知诸葛孔明。</p>
+<p>RBAC权限管理种，用户通过角色与权限进行关联[其架构灵感来源于操作系统的GBAC（GROUP-Based Access Control）的权限管理控制]。简单的来说，一个用户可以拥有若干角色，每一个角色拥有若干权限。这样，就构造成“用户-角色-权限”的授权模型。在这种模型中，用户与角色之间，角色与权限之间，一般者是多对多的关系。</p>
+<p><img src="http://www.lyblog.net/usr/uploads/2014/09/image9.png" alt=""></p>
+<p>在许多的实际应用中，系统不只是需要用户完成简单的注册，还需要对不同级别的用户对不同资源的访问具有不同的操作权限。且在企业开发中，权限管理系统也成了重复开发效率最高的一个模块之一。而在多套系统中，对应的权限管理只能满足自身系统的管理需要，无论是在数据库设计、权限访问和权限管理机制方式上都可能不同，这种不致性也就存在如下的憋端：</p>
+<p>维护多套系统，重复造轮子，时间没用在刀刃上<br>用户管理、组织机制等数据重复维护，数据的完整性、一致性很难得到保障<br>权限系统设计不同，概念理解不同，及相应技术差异，系统之间集成存在问题，单点登录难度大，也复杂的企业系统带来困难<br>RBAC是基于不断实践之后，提出的一个比较成熟的访问控制方案。实践表明，采用基于RBAC模型的权限管理系统具有以下优势：由于角色、权限之间的变化比角色、用户关系之间的变化相对要慢得多，减小了授权管理的复杂性，降低管理开销；而且能够灵活地支持应用系统的安全策略，并对应用系统的变化有很大的伸缩性；在操作上，权限分配直观、容易理解，便于使用；分级权限适合分层的用户级形式；重用性强。</p>
+<p><strong>更多关于thikphpRBA详细的配置使用过程，均可参考如下地址，作者写的十分详细</strong> <a href="https://www.lyblog.net/detail/552.html" target="_blank" rel="external">跳转到此</a></p>
+<p>TP框架3.1版本种RBAC类虽然功能完善，但是许多人觉得配置起来十分麻烦，于是到了3.2的时代，auth类就应运而生了。</p>
+<p>TP内置的auth权限类位于：<code>/ThinkPHP/Library/Think/Auth.class.php</code>,执行里面的sql生成3张表<code>auth_rule</code>、<code>auth_group</code>、<code>auth_group_access</code>；<br>然后自己再建一张users表；当然起其他的名字也是可以的；不过是需要在配置项中说明；</p>
+<p>先对各表的作用简单介绍；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">users：用户表；</div><div class="line">auth_group：用户组表；比如说超级管理员组、普通管理员组、编辑等等；同时记录每个管理组有哪些权限；</div><div class="line">auth_group_access：用户、群组关联表；比如说用户1属于超级管理员、用户2属于普通管理员和编辑；</div><div class="line">auth_rule：权限表；具体的每条权限是什么；</div></pre></td></tr></table></figure>
+<p>如果还没看过权限管理；那建议先看源代码；透彻学习一样东西；最好的方法就是研究源代码；<br>这里重点不是要讲auth的原理；而是要给一个auth的demo；</p>
+<p>git源代码：<a href="https://github.com/baijunyao/thinkphp-bjyadmin" target="_blank" rel="external">https://github.com/baijunyao/thinkphp-bjyadmin</a></p>
+<p>1：先下载项目并安装；<br>完成后分别点超级管理员登录和文章管理员登录；<br>你会发现他们的权限是不同的；看到的后台菜单是不一样的； </p>
+<p><img src="http://baijunyao.com/Upload/image/ueditor/20160514/1463186682405819.jpg" alt=""></p>
+<p>2：菜单管理</p>
+<p><img src="http://baijunyao.com/Upload/image/ueditor/20160504/1462291919136306.jpg" alt=""></p>
+<p>为了控制每种管理员都能看到那些菜单；所以要有菜单的管理；操作的是demo中的admin_nav表</p>
+<p>3：权限管理</p>
+<p><img src="http://baijunyao.com/Upload/image/ueditor/20160504/1462291929640930.jpg" alt=""></p>
+<p>具体的每项权限的名称和内容；我这里一般都是和菜单对应的；但是会比菜单管理多出一些；对比两张图即可看出来；多出来的一般都是些对菜单的增删改；<br>操作的是demo中的auth_rule表；</p>
+<p>4：用户组管理</p>
+<p>！<a href="http://baijunyao.com/Upload/image/ueditor/20160504/1462291949928045.jpg" target="_blank" rel="external"></a></p>
+<p>这里就是增加管理组；并为每个管理组分配权限了；选中的就表示有权限看到或者操作了；</p>
+<p><img src="http://baijunyao.com/Upload/image/ueditor/20160504/1462291962384468.jpg" alt=""></p>
+<p>5：管理员列表<br><img src="http://baijunyao.com/Upload/image/ueditor/20160514/1463186286405414.jpg" alt=""><br>把所有的管理员都列出来；可以添加管理员或者修改管理员的管理组；</p>
+<p>![])(<a href="http://baijunyao.com/Upload/image/ueditor/20160514/1463186391769769.jpg" target="_blank" rel="external">http://baijunyao.com/Upload/image/ueditor/20160514/1463186391769769.jpg</a>)</p>
+<p>当构建好这样一个结构后；权限管理简单其实只需要AdminBaseController.class.php中如下一段代码就完成了；</p>
+<p>/Application/Common/Controller/AdminBaseController.class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$auth=new \Think\Auth();</div><div class="line">$rule_name=MODULE_NAME.&apos;/&apos;.CONTROLLER_NAME.&apos;/&apos;.ACTION_NAME;</div><div class="line">$result=$auth-&gt;check($rule_name,$_SESSION[&apos;user&apos;][&apos;id&apos;]);</div><div class="line">if(!$result)&#123;</div><div class="line">    $this-&gt;error(&apos;您没有权限访问&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这也是在 thinkphp的目录结构设计经验总结中讲述 /Application/Common/Controller中建各种BaseController的原因；</p>
+<blockquote>
+<p>是不是感觉很简洁，几行代码就解决问题了。~~</p>
+</blockquote>
+<p>注：关于RBAC详细的视频教程，在以下链接可以找到,<a href="http://www.thinkphp.cn/topic/3425.html" target="_blank" rel="external">雪狐网基于ThinkPHP3.1.3版本框的RBAC权限管理视频教程</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/编程/">编程</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ThinkPHP/">ThinkPHP</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://jeristiano.github.io/2017/03/01/thinkphp框架RBAC权限控制和auth权限控制类/" data-title="thinkphp框架RBAC权限控制和auth权限控制类 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/28/译-为程序员准备的十款最好的IDE编辑器/"  title="【翻译】 为程序员准备的十款最好的IDE编辑器">
+ <strong>下一篇：</strong><br/> 
+ <span>【翻译】 为程序员准备的十款最好的IDE编辑器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/03/01/thinkphp框架RBAC权限控制和auth权限控制类/" data-title="thinkphp框架RBAC权限控制和auth权限控制类" data-url="https://jeristiano.github.io/2017/03/01/thinkphp框架RBAC权限控制和auth权限控制类/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#thinkphp框架RBAC权限控制和auth权限控制类"><span class="toc-number">1.</span> <span class="toc-text">thinkphp框架RBAC权限控制和auth权限控制类</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="jeristiano" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/杂谈/" title="杂谈">杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/laravel/" title="laravel">laravel<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/罗辑思维/" title="罗辑思维">罗辑思维<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ThinkPHP/" title="ThinkPHP">ThinkPHP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/蔡氏效应/" title="蔡氏效应">蔡氏效应<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php基础/" title="php基础">php基础<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://wsgzao.github.io" target="_blank" title="HelloDog">HelloDog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 时来天地皆同力,运去英雄不自由 <br/>
+			The Long Lost One To</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jeristiano" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:jeremykuang@foxmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="jeremyK">jeremyK</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"jerisitiano"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
