@@ -77,7 +77,7 @@
     <link href="https://jeristiano.github.io/2017/02/28/%E8%AF%91-%E4%B8%BA%E7%A8%8B%E5%BA%8F%E5%91%98%E5%87%86%E5%A4%87%E7%9A%84%E5%8D%81%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%9A%84IDE%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     <id>https://jeristiano.github.io/2017/02/28/译-为程序员准备的十款最好的IDE编辑器/</id>
     <published>2017-02-28T11:20:27.000Z</published>
-    <updated>2017-02-28T13:01:39.843Z</updated>
+    <updated>2017-03-01T13:30:09.851Z</updated>
     
     <content type="html"><![CDATA[<h2 id="为程序员准备的十款最好的IDE编辑器"><a href="#为程序员准备的十款最好的IDE编辑器" class="headerlink" title="为程序员准备的十款最好的IDE编辑器"></a>为程序员准备的十款最好的IDE编辑器</h2><hr>
 <blockquote>
@@ -109,6 +109,16 @@
 <p>有许多 PHP 的外部包，使得这个优雅的编辑器变成一个优雅的 Sublime PHP IDE。这些著名和使用的包有——package control，Sublime PHP companion， xDebug client——CodeBug， PHPCS， CodIntel， Simple PHPUnit 和 PHPDoc。</p>
 <p>一旦你安装 sublime text 3 当作 PHP IDE使用， 添加一些有用的包，你将感受 sublime text的优雅，和PHP开发的强大。</p>
 <p>关于 Sublime Text，你可以在这里<a href="https://www.sublimetext.com/" target="_blank" rel="external">sublimetext.com</a>读到更多</p>
+<h3 id="4-Eclipse-PDT"><a href="#4-Eclipse-PDT" class="headerlink" title="4. Eclipse PDT"></a>4. Eclipse PDT</h3><p>Eclipse PDT (PHP Development Tools)是另一种免费的开源选择方案， Eclipse拥有庞大的开发者社区致力于开发各种各样的插件，这使得它与Storms PHP, NetBeans和Zend studio等顶级的开发IDE不分伯仲。</p>
+<p>相比于商业版IDE，刚开始时需要多做一些工作，但你省下的钱，一切都是值得的。与PHPStorm和Zend Studio相较，Eclipse PDT节省授权费是一个很大的优势。如果你是传统的Eclipse爱好者，使用Eclipse PDT会使你感觉很自在。</p>
+<p>有的人会说Eclipse会很慢，说实话如果你的系统配置很烂，付费版的产品相较于Eclipse会表现得更好。然而，现在基本的笔记本配置已经能够让Eclipse足够快的运行而不拖你的后腿。</p>
+<p>它关键的特性包括： 语法高亮(syntax highlighting), 代码提示(code assist),  代码格式化(code formatter), 重构(refactoring), 代码模版(code templates), 代码导航(code navigation),  php调试(php debugging), 语法验证(syntax validation) 并且拥有一个庞大的社区的eclipse生态系统来支持它。</p>
+<p>开始使用时，你可以下载专用于PHP开发的Eclipse包，它包含了PHP语言支持，XML编辑器，Git客户端和 Mylyn。软件能够在Mac OS X, Windows 和 Linux系统下下载并使用。</p>
+<h3 id="5-VIM"><a href="#5-VIM" class="headerlink" title="5. VIM"></a>5. VIM</h3><p>VIM 遵循GPL授权协议，是一款免费下载使用的开源文本编辑器。在开发社区内非常的流行.是最先进的文本编辑器之一.Facebook的工程师早先一直都是使用VIM来编写他们的PHP代码，后来他们转向了自己的语言hack。</p>
+<p>我们知道VIM作为一款优秀文本编辑器具有众多的特性，但当你仔细的配置完成后，它提供了不亚于完全成熟的 PHP 开发环境以适用于你的PHP开发。</p>
+<p>如果你是只喜欢用键盘工作， VIM就很适合你，它模块化，轻量并且快速。</p>
+<p>要找一款 Linux下的PHP IDE，VIM 就是你要找的并且它的理念与Sublime Text 3相似， VIM也需要插件来转化成像 PHPStorm 或Netbeans一样的IDE， 最开始你需要花费大量的工作来配置大量的插件，但在最后成功后你会发现一切都是值得的。</p>
+<p>VIM显然应该被算做是一款免费的PHP IDE。 你可以在 <a href="http://www.vim.org/" target="_blank" rel="external">vim.org</a>上了解更多！</p>
 ]]></content>
     
     <summary type="html">
