@@ -1407,10 +1407,10 @@ $superman_3 = $container-&gt;make('superman', ['xpower']);
   
   <entry>
     <title>Laravel 学习笔记：神奇的服务容器</title>
-    <link href="https://jeristiano.github.io/2017/03/08/Laravel-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A5%9E%E5%A5%87%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8/"/>
-    <id>https://jeristiano.github.io/2017/03/08/Laravel-学习笔记：神奇的服务容器/</id>
-    <published>2017-03-08T14:48:18.000Z</published>
-    <updated>2017-03-11T14:32:04.434Z</updated>
+    <link href="https://jeristiano.github.io/2017/03/01/Laravel-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A5%9E%E5%A5%87%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8/"/>
+    <id>https://jeristiano.github.io/2017/03/01/Laravel-学习笔记：神奇的服务容器/</id>
+    <published>2017-03-01T13:48:18.000Z</published>
+    <updated>2017-03-11T14:34:41.201Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>学习laravel的过程经常有感于它神奇的服务容器机制，又限于水平有限，不能深刻理解，当然这需要时间。</p>
