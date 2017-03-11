@@ -1,0 +1,564 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>【译】放弃PHP的代价太高 | Jeremy&#39;s space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jeremyK">
+    
+
+    
+    <meta name="description" content="放弃 PHP 代价太高原文：Leaving PHP is too expensive前言我首次编程使用的语言就是PHP,我工作过许多家公司都把PHP 作为主要的开发语言,然而,其他语言的出现,我不能视而不见,现在PHP已不再是我主要的开发语言了.
+我是一个快乐的人,相比于”轻松赚钱和尽快地完成工作”而言,我并不过分关心语言的设计.最近我辞去了一份全职php开发的工作,我现在的职业是前端开发者.
+我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】放弃PHP的代价太高">
+<meta property="og:url" content="https://jeristiano.github.io/2017/02/15/【译】放弃PHP的代价太大了/index.html">
+<meta property="og:site_name" content="Jeremy's space">
+<meta property="og:description" content="放弃 PHP 代价太高原文：Leaving PHP is too expensive前言我首次编程使用的语言就是PHP,我工作过许多家公司都把PHP 作为主要的开发语言,然而,其他语言的出现,我不能视而不见,现在PHP已不再是我主要的开发语言了.
+我是一个快乐的人,相比于”轻松赚钱和尽快地完成工作”而言,我并不过分关心语言的设计.最近我辞去了一份全职php开发的工作,我现在的职业是前端开发者.
+我">
+<meta property="og:image" content="http://static.oschina.net/uploads/img/201602/17155945_QFix.jpg">
+<meta property="og:updated_time" content="2017-02-15T08:35:47.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【译】放弃PHP的代价太高">
+<meta name="twitter:description" content="放弃 PHP 代价太高原文：Leaving PHP is too expensive前言我首次编程使用的语言就是PHP,我工作过许多家公司都把PHP 作为主要的开发语言,然而,其他语言的出现,我不能视而不见,现在PHP已不再是我主要的开发语言了.
+我是一个快乐的人,相比于”轻松赚钱和尽快地完成工作”而言,我并不过分关心语言的设计.最近我辞去了一份全职php开发的工作,我现在的职业是前端开发者.
+我">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/img/201602/17155945_QFix.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jeremy&#39;s space" title="Jeremy&#39;s space"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jeremy&#39;s space">Jeremy&#39;s space</a></h1>
+				<h2 class="blog-motto">Stay Simple Stay Naive , Don&#39;t Be Evil</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/index">索引 | Index</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:jeristiano.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/15/【译】放弃PHP的代价太大了/" title="【译】放弃PHP的代价太高" itemprop="url">【译】放弃PHP的代价太高</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-15T03:57:03.000Z" itemprop="datePublished"> 发表于 2017-02-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#放弃-PHP-代价太高"><span class="toc-number">1.</span> <span class="toc-text">放弃 PHP 代价太高</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原文：Leaving-PHP-is-too-expensive"><span class="toc-number">1.0.1.</span> <span class="toc-text">原文：Leaving PHP is too expensive</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#业余项目的经济问题"><span class="toc-number">1.2.</span> <span class="toc-text">业余项目的经济问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Heroku"><span class="toc-number">1.3.</span> <span class="toc-text">Heroku</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Amazon-web-services"><span class="toc-number">1.4.</span> <span class="toc-text">Amazon web services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Microsoft-Azure"><span class="toc-number">1.5.</span> <span class="toc-text">Microsoft Azure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GleSYS-Digital-Ocean-Linode-自己的服务器"><span class="toc-number">1.6.</span> <span class="toc-text">GleSYS, Digital Ocean, Linode, 自己的服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP社区提供解决方案"><span class="toc-number">1.7.</span> <span class="toc-text">PHP社区提供解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#精打细算"><span class="toc-number">1.8.</span> <span class="toc-text">精打细算</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="放弃-PHP-代价太高"><a href="#放弃-PHP-代价太高" class="headerlink" title="放弃 PHP 代价太高"></a>放弃 PHP 代价太高</h2><h4 id="原文：Leaving-PHP-is-too-expensive"><a href="#原文：Leaving-PHP-is-too-expensive" class="headerlink" title="原文：Leaving PHP is too expensive"></a>原文：Leaving PHP is too expensive</h4><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我首次编程使用的语言就是PHP,我工作过许多家公司都把PHP 作为主要的开发语言,然而,其他语言的出现,我不能视而不见,现在PHP已不再是我主要的开发语言了.</p>
+<p>我是一个快乐的人,相比于”轻松赚钱和尽快地完成工作”而言,我并不过分关心语言的设计.最近我辞去了一份全职php开发的工作,我现在的职业是前端开发者.</p>
+<p>我最近阅读了一篇博客《 Eevee, PHP: 糟糕设计的分形 》文章很老,言辞激烈令人不适,我已经无法忽视它的存在。我这篇文章就是告诉人们为什么我很难离开PHP。</p>
+<h3 id="业余项目的经济问题"><a href="#业余项目的经济问题" class="headerlink" title="业余项目的经济问题"></a>业余项目的经济问题</h3><p>我现在自由,如果我不想,我不需要写一行PHP代码,也不再从事后端开发,除非浏览器发生急剧转变,否则我不需要那么关注未来。</p>
+<p>然而，业余时间,我想要开发项目,实现一些我的想法,而且不止一个,事实上,我正在尝试开发个轻量级的网站,获得满意的收入(我的目标),同时,昨晚我开始了第一个未命名的网站开发计划.</p>
+<p>不幸的是,由于这个项目自己掏钱并且还需要建立很多站点,许多选择不得不放弃,我将举些列子来说明,为什么主机提供商不会为我以及我和处境相同的人提供帮助.</p>
+<h3 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h3><p>如果经济条件允许,我就会把所有的应用放在Heroku运行,Heroku是我使用过的主机里,体验超级好的一家。托管,本地环境配置,语言等都不麻烦.</p>
+<p>Heroku的问题在于他的定价模式，尽管每个项目7美元并不算多,但如果你有多个项目时,费用就飞速上升了,10个应用成本一下蹿升到70美元,对于这些可能没有意义的项目来说,每个月的花费太过高昂。</p>
+<p>以上还没考虑哦1000万行数据额外付9美元的数据库使用成本,如果项目是有很大的访问量,那也会增加应用的成本,最后每个月都100多美元。</p>
+<h3 id="Amazon-web-services"><a href="#Amazon-web-services" class="headerlink" title="Amazon web services"></a>Amazon web services</h3><p> AWS看起来要便宜许多,但我一直都感觉它在许多方便增加了使用的复杂度,就配置和成本来说,它真的不是适合每月只有几百访问量的小网站.</p>
+<p> 配置AWS上,我没有太多的经验,但是围绕这个产品,我感觉它有一股企业般的味道,他们更加关心那些拥有复杂应用的大客户。</p>
+<p> 或者,我们值得学习如何在AWS上高效地部署,但怎样简单的使用git去部署它呢?为了部署它,我需要额外的服务吗?相同的实例可以在多个应用中运行吗?收费模式是怎样的?尽管根据上面的链接页面看了价格费用,但仍我不明白,哪块是跟我相关,访问他们的网站让我产生了太多的疑问.</p>
+<h3 id="Microsoft-Azure"><a href="#Microsoft-Azure" class="headerlink" title="Microsoft Azure"></a>Microsoft Azure</h3><p> 一眼看去,Azure看起来像救世主,但是,在大型项目上使用它,一个问题绕不过去,Google和HTTPS。</p>
+<p> <img src="http://static.oschina.net/uploads/img/201602/17155945_QFix.jpg" alt=""></p>
+<p>  更加明智的做法是,看下它的定价模式(图片是瑞典语),如果你选择了标准版,你可以部署50个APP,我更倾向于标准版,每月580克朗,折合70欧元,虽然仍然有点贵,但在Heroku上,我喜欢的特性,它都具备。虽然复杂了一点,并且价格模式经常变化,但仍然很不错。</p>
+<p>  标准版定价的问题在于5个SNI((Server Name Indication),我理解的意思是,只能有5个站点支持SSL,由于,谷歌一直打击没有SSL证书的站点,并且,Let’ encrypt 项目使得每个有SSL证书的站点都可轻松的加密。我5个站点支持不太好。以上是我简单的理解，可以找到的说明不多，也许我错了，事实上，我倒是希望我错了，如果我错了，请在评论区告我。</p>
+<h3 id="GleSYS-Digital-Ocean-Linode-自己的服务器"><a href="#GleSYS-Digital-Ocean-Linode-自己的服务器" class="headerlink" title="GleSYS, Digital Ocean, Linode, 自己的服务器"></a>GleSYS, Digital Ocean, Linode, 自己的服务器</h3><p>  唯一可靠的方案是到以上的服务商租用一台VPS, 关于的GleSYS好消息是,他有瑞典的主机,那意味着更低延时,并且数据没有风险的通过美国政府的审查,我可以放心的储存用户数据.</p>
+<p>  相比于托管服务,它价格十分低廉,就是需要些时间,你必须亲自配置许多方面,工作量很大,这也是我倾向选择托管服务的最重要的原因。当我正在工作,突然有一个服务器挂了,我可没有时间恢复它,直到我回家了,那可能是8个小时后的事了.</p>
+<h3 id="PHP社区提供解决方案"><a href="#PHP社区提供解决方案" class="headerlink" title="PHP社区提供解决方案"></a>PHP社区提供解决方案</h3><p>  当Eevee 抱怨PHP这们语言缺乏特性的时候,社区已经给出了最好的的主机托管方案,我已经试过了,这也是我用过的最便宜的解决方案.</p>
+<p>  解决方案是 <a href="https://forge.laravel.com/" target="_blank" rel="external">laravel forge</a></p>
+<p>  如果你没有立即访问这个链接,我来解释下,Laravel Forge服务9美元/月,提供无限制的生产环境的PHP服务器(安装,设置,配置),并且可以通过web面板控制它,更令人惊喜的是,我可以针对任何VPS提供商,即使是AWS或者数字海洋,都什么简单.它可以帮助你扩展服气,设置cronjobs,编辑环境配置,使用git push 部署等等.</p>
+<p>  Laravel Forge服务提供了给我所有Azure或HeroHu的良好特性,不限应用数量（只要VPS可以处理它）。Laravel Forge不限于Laravel框架，任何PHP应用程序都行。</p>
+<p>对Eevee这样的人来说，本条不能改变你对PHP社区的观念的话，就没什么能了。但认真说，知道这个的人怎么会离开这么厉害的服务呢？</p>
+<h3 id="精打细算"><a href="#精打细算" class="headerlink" title="精打细算"></a>精打细算</h3><p>我的经历十分常见,我并不孤独,世界范围内,数以百万计的小公司需要主机托管应用,或者那些人的私人项目正是网站.</p>
+<p>假设你不想做启动服务器,运行,安装证书的等运维工作,10美元的Linode加上9美元的Laravel Forge服务是最佳的选择—-快速并且又便宜</p>
+<p>我在网上研究过答案，唯一可行的替代方案就是使用类似于Codeship的持续集成(Continuous Integration)服务。它的服务也不错，然而它不是无限的,当你拥有超过5个项目（我大概要超过）的时候费用直接提高到49美元。另外，Codeship还提供自动化测试以及git推送部署服务，但它<strong>不提供服务器</strong>，所以你仍需要自行设置网站服务器、数据库并配置好。</p>
+<p>对于其他语言，又Laravel Forge有这样的替代方案，也许没有。但我认为，对我以及很多其他人来说，放弃PHP代价实在太高了。即使我能担负那个费用,也没有理由那么做。</p>
+<p>引用Eevee的话说:</p>
+<pre><code>毫无疑问,PHP太流行了!
+</code></pre><p>Translated by JeremyKuang</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/编程/">编程</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/翻译/">翻译</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://jeristiano.github.io/2017/02/15/【译】放弃PHP的代价太大了/" data-title="【译】放弃PHP的代价太高 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/02/21/截取中文字符串无乱码/" title="RT:截取中文字符串无乱码">
+  <strong>上一篇：</strong><br/>
+  <span>
+  RT:截取中文字符串无乱码</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/14/GIT常用命令备忘/"  title="GIT常用命令备忘">
+ <strong>下一篇：</strong><br/> 
+ <span>GIT常用命令备忘
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/15/【译】放弃PHP的代价太大了/" data-title="【译】放弃PHP的代价太高" data-url="https://jeristiano.github.io/2017/02/15/【译】放弃PHP的代价太大了/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#放弃-PHP-代价太高"><span class="toc-number">1.</span> <span class="toc-text">放弃 PHP 代价太高</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原文：Leaving-PHP-is-too-expensive"><span class="toc-number">1.0.1.</span> <span class="toc-text">原文：Leaving PHP is too expensive</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#业余项目的经济问题"><span class="toc-number">1.2.</span> <span class="toc-text">业余项目的经济问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Heroku"><span class="toc-number">1.3.</span> <span class="toc-text">Heroku</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Amazon-web-services"><span class="toc-number">1.4.</span> <span class="toc-text">Amazon web services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Microsoft-Azure"><span class="toc-number">1.5.</span> <span class="toc-text">Microsoft Azure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GleSYS-Digital-Ocean-Linode-自己的服务器"><span class="toc-number">1.6.</span> <span class="toc-text">GleSYS, Digital Ocean, Linode, 自己的服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP社区提供解决方案"><span class="toc-number">1.7.</span> <span class="toc-text">PHP社区提供解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#精打细算"><span class="toc-number">1.8.</span> <span class="toc-text">精打细算</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="jeristiano" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/杂谈/" title="杂谈">杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/laravel/" title="laravel">laravel<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/罗辑思维/" title="罗辑思维">罗辑思维<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ThinkPHP/" title="ThinkPHP">ThinkPHP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php基础/" title="php基础">php基础<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/蔡氏效应/" title="蔡氏效应">蔡氏效应<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://wsgzao.github.io" target="_blank" title="HelloDog">HelloDog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 时来天地皆同力,运去英雄不自由 <br/>
+			The Long Lost One To</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jeristiano" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:jeremykuang@foxmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="jeremyK">jeremyK</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"jerisitiano"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
