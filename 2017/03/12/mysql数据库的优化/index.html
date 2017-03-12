@@ -4,41 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>时间的朋友 | Jeremy&#39;s space</title>
+    <title>mysql数据库的优化 | Jeremy&#39;s space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="jeremyK">
     
 
     
-    <meta name="description" content="updated at 2017-02-10pubulished at 2017-02-08
+    <meta name="description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
+ 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
+mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
+2 语句查询优化
 
-
-小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这条河里的浮沉和你没有任何关系.
-巴菲的的合伙人查理芒格讲:宏观是我们必须承受的,微观才是我们有所作为的地方
-移动互联网的红利已经结束,流量已经被BAT瓜分干净
-什么样的人会被人工智能所替代呢? 答案是:只要你">
+sql语句尽可能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="时间的朋友">
-<meta property="og:url" content="https://jeristiano.github.io/2017/02/08/friend-of-time/index.html">
+<meta property="og:title" content="mysql数据库的优化">
+<meta property="og:url" content="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/index.html">
 <meta property="og:site_name" content="Jeremy's space">
-<meta property="og:description" content="updated at 2017-02-10pubulished at 2017-02-08
+<meta property="og:description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
+ 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
+mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
+2 语句查询优化
 
-
-小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这条河里的浮沉和你没有任何关系.
-巴菲的的合伙人查理芒格讲:宏观是我们必须承受的,微观才是我们有所作为的地方
-移动互联网的红利已经结束,流量已经被BAT瓜分干净
-什么样的人会被人工智能所替代呢? 答案是:只要你">
-<meta property="og:updated_time" content="2017-02-10T06:52:15.343Z">
+sql语句尽可能">
+<meta property="og:updated_time" content="2017-03-12T06:56:03.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="时间的朋友">
-<meta name="twitter:description" content="updated at 2017-02-10pubulished at 2017-02-08
+<meta name="twitter:title" content="mysql数据库的优化">
+<meta name="twitter:description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
+ 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
+mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
+2 语句查询优化
 
-
-小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这条河里的浮沉和你没有任何关系.
-巴菲的的合伙人查理芒格讲:宏观是我们必须承受的,微观才是我们有所作为的地方
-移动互联网的红利已经结束,流量已经被BAT瓜分干净
-什么样的人会被人工智能所替代呢? 答案是:只要你">
+sql语句尽可能">
 
     
     <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
@@ -100,14 +97,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/02/08/friend-of-time/" title="时间的朋友" itemprop="url">时间的朋友</a>
+      <a href="/2017/03/12/mysql数据库的优化/" title="mysql数据库的优化" itemprop="url">mysql数据库的优化</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
 		
   <p class="article-time">
-    <time datetime="2017-02-08T13:39:18.000Z" itemprop="datePublished"> 发表于 2017-02-08</time>
+    <time datetime="2017-03-12T06:52:26.000Z" itemprop="datePublished"> 发表于 2017-03-12</time>
     
   </p>
 </header>
@@ -116,26 +113,56 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql数据库的优化"><span class="toc-number">1.</span> <span class="toc-text">mysql数据库的优化</span></a></li></ol>
 		
 		</div>
 		
-		<blockquote>
-<p>updated at 2017-02-10<br>pubulished at 2017-02-08</p>
-</blockquote>
+		<p> 想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。</p>
+<p> 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！</p>
+<h3 id="mysql数据库的优化"><a href="#mysql数据库的优化" class="headerlink" title="mysql数据库的优化"></a>mysql数据库的优化</h3><p>1 开启mysql慢查询日志，通过慢查询日志发现有问题sql</p>
+<p>2 语句查询优化</p>
 <ul>
-<li>小马过河的故事告诉我们,不用听老水牛的也不用在意小松鼠说什么,他们 的处境和你不一样,他们在这条河里的浮沉和你没有任何关系.</li>
-<li>巴菲的的合伙人查理芒格讲:宏观是我们必须承受的,微观才是我们有所作为的地方</li>
-<li>移动互联网的红利已经结束,流量已经被BAT瓜分干净</li>
-<li>什么样的人会被人工智能所替代呢? 答案是:只要你的技能是某种特定的领域,那么你迟早会被替代</li>
-<li>在美国大概有40%的工作岗位会被人工智能替代,而中国会有70%.</li>
-<li>什么样的人不会被人工智能替代?只要你的领导力和创造力突出你就可能不会被替代.</li>
-<li>我们都认为进步是好,但是比进步更好的是缓慢的进步(人工智能带来的冲击)</li>
-<li>你只需要抽出20%的时间去了解一个领域80%的知识就足够了(财新网主编王朔)</li>
-<li>只是拥有一个专业的技能,结果就很可能被替代,未来与人工智能博弈比的是跨界的能力,就像一个游牧民族,哪里有丰富的水草就游牧到哪里.</li>
-<li>两年前我们糊里糊涂的融了资，然后变成必须以上市为目的公司，……然后发现资本市场找你要的不是钱，也不是生意，他要的是两个字，叫做<strong>增长</strong>。就是你的钱要月挣越多才行，挣很多不行，后来发现他找你要的是不是增长，是<strong>持续</strong>的增长，增长的速度要越来越快，到后来我发现，不对，不对 他要的根本不是增长速度，而是<strong>你的增长速度要超过预期</strong>。老天爷，我现在不管有多好，他们都要求更好，比预期的还好，这是一个什么日子？</li>
-<li>我们从小就被灌输一种观念，等我有钱了，有关系了，有资源了，我就可以过的好。那天看二手房，我知道一个道理，无论你有多少钱，多少资源，有些人就有这个能力，仍然过不好这一生。（那些人指的是富人，但是过的并不体面，不讲卫生。）</li>
-<li>我们这一生想过的好，跟资源并没有多大关系，一切都是自我。</li>
+<li>sql语句尽可能简单，大语句拆小语句</li>
+<li>避免使用 select * from / not in /like 这样高消耗的语句</li>
+<li>少用链接join</li>
+<li>使用group by 分组，自动排序</li>
+<li>批量更新，尽量避免循环写入数据</li>
+</ul>
+<p>3 优化表结构</p>
+<ul>
+<li>数据库表的范式优化（三大范式）</li>
+<li>尽可能地使用最有效(最小)的数据类型</li>
+<li>不要将数字存储为字符串，字符转化为数字，用int存储ip而非char(15)</li>
+<li>优先使用枚举类型设置类似性别，是否等</li>
+<li>使用not null （null字段很难优化查询）</li>
+<li>不再数据库里存图片</li>
+<li>数据库表拆分</li>
+</ul>
+<p>4 索引优化</p>
+<p>建立合适的索引（主键索引，唯一索引，普通索引）</p>
+<ol>
+<li>较频繁的作为查询条件字段应该创建索引</li>
+<li>不会出现在WHERE子句中字段不该创建索</li>
+</ol>
+<blockquote>
+<p>注意： 唯一性太差的字段不适合单独创建索引，即使频繁作为查询条件，更新非常频繁的字段不适合创建索引<br>索引是有代价的，虽然查询速度提高了，但是毁形象到增删改的效率</p>
+</blockquote>
+<p>5 合理的硬件资源和操作系统</p>
+<ul>
+<li>读写分离，主从数据库<br>主库master用来写入，slave1—slave3都用来做select，每个数据库分担的压力小了很多</li>
+</ul>
+<p>6 缓存机制</p>
+<ul>
+<li>使用redis memcached等nosql数据库作为缓存，减少数据的请求，分担数据库的压力。</li>
+</ul>
+<blockquote>
+<p>注： 数据库的优化方法有很多，很多方法来自于实际的经验，而不是纸上谈兵，这也是为什么DBA这个职业是经验重要于理论的原因。</p>
+</blockquote>
+<p>转发声明：以下是不少开发者总结的心得，直接转发在这里作为参考。同时感谢这些作者的无私奉献！</p>
+<ul>
+<li><a href="http://www.cnblogs.com/villion/archive/2009/07/23/1893765.html" target="_blank" rel="external">MySQL数据库优化总结</a></li>
+<li><a href="http://www.imooc.com/learn/194" target="_blank" rel="external">慕课网-性能优化之MySQL优化视频教程</a></li>
+<li><a href="http://blog.csdn.net/samjustin1/article/details/52212421" target="_blank" rel="external">mysql数据库优化总结-&gt;MySQL性能调优与架构设计读书笔记</a></li>
 </ul>
   
 	</div>
@@ -144,13 +171,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  <a class="article-category-link" href="/categories/编程/">编程</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/罗辑思维/">罗辑思维</a>
+  <span></span> <a href="/tags/mysql/">mysql</a>
   </div>
 
 </div>
@@ -159,7 +186,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://jeristiano.github.io/2017/02/08/friend-of-time/" data-title="时间的朋友 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  <div data-url="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/" data-title="mysql数据库的优化 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -172,19 +199,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/02/09/蔡氏效应/" title="蔡氏效应">
-  <strong>上一篇：</strong><br/>
-  <span>
-  蔡氏效应</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/02/08/laravel-not/"  title="laravel数据库以及CURD">
+<a href="/2017/03/11/Laravel-学习笔记：神奇的服务容器/"  title="Laravel-学习笔记：神奇的服务容器">
  <strong>下一篇：</strong><br/> 
- <span>laravel数据库以及CURD
+ <span>Laravel-学习笔记：神奇的服务容器
 </span>
 </a>
 </div>
@@ -193,7 +212,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/02/08/friend-of-time/" data-title="时间的朋友" data-url="https://jeristiano.github.io/2017/02/08/friend-of-time/"></div>
+	<div class="ds-thread" data-thread-key="2017/03/12/mysql数据库的优化/" data-title="mysql数据库的优化" data-url="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/"></div>
 </section>
 
 
@@ -203,7 +222,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql数据库的优化"><span class="toc-number">1.</span> <span class="toc-text">mysql数据库的优化</span></a></li></ol>
  
   </div>
 

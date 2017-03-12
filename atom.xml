@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jeristiano.github.io/"/>
-  <updated>2017-03-11T14:47:40.775Z</updated>
+  <updated>2017-03-12T06:56:03.138Z</updated>
   <id>https://jeristiano.github.io/</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql数据库的优化</title>
+    <link href="https://jeristiano.github.io/2017/03/12/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BC%98%E5%8C%96/"/>
+    <id>https://jeristiano.github.io/2017/03/12/mysql数据库的优化/</id>
+    <published>2017-03-12T06:52:26.000Z</published>
+    <updated>2017-03-12T06:56:03.138Z</updated>
+    
+    <content type="html"><![CDATA[<p> 想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。</p>
+<p> 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！</p>
+<h3 id="mysql数据库的优化"><a href="#mysql数据库的优化" class="headerlink" title="mysql数据库的优化"></a>mysql数据库的优化</h3><p>1 开启mysql慢查询日志，通过慢查询日志发现有问题sql</p>
+<p>2 语句查询优化</p>
+<ul>
+<li>sql语句尽可能简单，大语句拆小语句</li>
+<li>避免使用 select * from / not in /like 这样高消耗的语句</li>
+<li>少用链接join</li>
+<li>使用group by 分组，自动排序</li>
+<li>批量更新，尽量避免循环写入数据</li>
+</ul>
+<p>3 优化表结构</p>
+<ul>
+<li>数据库表的范式优化（三大范式）</li>
+<li>尽可能地使用最有效(最小)的数据类型</li>
+<li>不要将数字存储为字符串，字符转化为数字，用int存储ip而非char(15)</li>
+<li>优先使用枚举类型设置类似性别，是否等</li>
+<li>使用not null （null字段很难优化查询）</li>
+<li>不再数据库里存图片</li>
+<li>数据库表拆分</li>
+</ul>
+<p>4 索引优化</p>
+<p>建立合适的索引（主键索引，唯一索引，普通索引）</p>
+<ol>
+<li>较频繁的作为查询条件字段应该创建索引</li>
+<li>不会出现在WHERE子句中字段不该创建索</li>
+</ol>
+<blockquote>
+<p>注意： 唯一性太差的字段不适合单独创建索引，即使频繁作为查询条件，更新非常频繁的字段不适合创建索引<br>索引是有代价的，虽然查询速度提高了，但是毁形象到增删改的效率</p>
+</blockquote>
+<p>5 合理的硬件资源和操作系统</p>
+<ul>
+<li>读写分离，主从数据库<br>主库master用来写入，slave1—slave3都用来做select，每个数据库分担的压力小了很多</li>
+</ul>
+<p>6 缓存机制</p>
+<ul>
+<li>使用redis memcached等nosql数据库作为缓存，减少数据的请求，分担数据库的压力。</li>
+</ul>
+<blockquote>
+<p>注： 数据库的优化方法有很多，很多方法来自于实际的经验，而不是纸上谈兵，这也是为什么DBA这个职业是经验重要于理论的原因。</p>
+</blockquote>
+<p>转发声明：以下是不少开发者总结的心得，直接转发在这里作为参考。同时感谢这些作者的无私奉献！</p>
+<ul>
+<li><a href="http://www.cnblogs.com/villion/archive/2009/07/23/1893765.html" target="_blank" rel="external">MySQL数据库优化总结</a></li>
+<li><a href="http://www.imooc.com/learn/194" target="_blank" rel="external">慕课网-性能优化之MySQL优化视频教程</a></li>
+<li><a href="http://blog.csdn.net/samjustin1/article/details/52212421" target="_blank" rel="external">mysql数据库优化总结-&gt;MySQL性能调优与架构设计读书笔记</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。&lt;/p&gt;
+&lt;p&gt; 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="mysql" scheme="https://jeristiano.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel-学习笔记：神奇的服务容器</title>
