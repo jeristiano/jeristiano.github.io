@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jeristiano.github.io/"/>
-  <updated>2017-03-12T06:56:03.138Z</updated>
+  <updated>2017-04-24T06:32:15.701Z</updated>
   <id>https://jeristiano.github.io/</id>
   
   <author>
@@ -14,6 +14,132 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【译】失去了编程的兴趣，该做点什么？</title>
+    <link href="https://jeristiano.github.io/2017/04/24/%E3%80%90%E8%AF%91%E3%80%91%E5%A4%B1%E5%8E%BB%E4%BA%86%E7%BC%96%E7%A8%8B%E7%9A%84%E5%85%B4%E8%B6%A3%EF%BC%8C%E8%AF%A5%E5%81%9A%E7%82%B9%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>https://jeristiano.github.io/2017/04/24/【译】失去了编程的兴趣，该做点什么？/</id>
+    <published>2017-04-24T06:25:56.000Z</published>
+    <updated>2017-04-24T06:32:15.701Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。</p>
+<blockquote>
+<p>问题描述：我现在是信息科学专业的即将毕业的学生，然后，随着渐渐的失去了对编程的兴趣，我先在被毕业后去做什么的问题困扰着，我现在真的很焦虑，还有一学期就要毕业被仍向社会了，有什么好的建议吗？</p>
+</blockquote>
+<p>匿名回答：</p>
+<p>大学毕业后，我也有过相同的状态，我几乎一年没有从事编程的工作，转而去做了其他的事情。大学时我被许多问题困扰着，钱啊，感情啊，这给我带来了十分大的压力，最后影响到我的学业，简单的说，大学最后两年我就像是在地狱一样。也许是我没理解它，提起编程脑子我就会联想到一大堆困难和痛苦，在心理层面上对编程有很大的抵触。</p>
+<p>我不知道你经历过什么艰难困苦的人生，它可能给你带来心理阴影，但如果你曾经热爱过编程的话，那么兴趣是不会自己消失的，你需要弄明白，你为什么失去了兴趣，然后解决这个问题，重新找回对编程的热爱。</p>
+<p>大学学业不佳的内疚感，自我感觉失败，在解决了这些问题后我重新找回了编程的乐趣，同时意识到，在当时的环境中，我做的其实很好。这非常不容易，尤其是，以前你的生活过得还不错，并不知道失败是什么，直到那段糟糕的日子到来。我知道拿自己的痛苦经历和别人相比并不真实。但是我真的觉得那段经历是十分艰难。</p>
+<p>为了解决这些难题，我其实寻求了职业帮助，我去看了心理医生，这帮助了我很多，我不知道你信教吗，我相信上帝，我去了教堂寻求上帝的帮助，她也帮助了我很多，帮我克服了我心理的旧伤口。我也同交往了三年有虐待倾向的女朋友分手了，她让我的生活一团糟。这一切都十分的十分艰难，但我很高兴，我做了改变。</p>
+<p>然后，我克服了这些问题，一点一滴的找回生活的信心，对编程的兴趣慢慢的回来了，我甚至都没留意到，我开始写一些小的东西，然后是大的，我又学了一门新的编程语言，新的web框架，找了一份程序员的工作，并且现在一直在从事。业余时间，我还做了个人的项目，我重新热爱了编程，甚至更加热爱了。</p>
+<blockquote>
+<p>原文出处：<a href="https://www.quora.com/Losing-interest-in-programming-What-to-do" target="_blank" rel="external">https://www.quora.com/Losing-interest-in-programming-What-to-do</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。&lt;/p&gt;
+&lt;bloc
+    
+    </summary>
+    
+      <category term="杂谈" scheme="https://jeristiano.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="翻译" scheme="https://jeristiano.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php业务逻辑课程收集</title>
+    <link href="https://jeristiano.github.io/2017/04/24/php%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E8%AF%BE%E7%A8%8B%E6%94%B6%E9%9B%86/"/>
+    <id>https://jeristiano.github.io/2017/04/24/php业务逻辑课程收集/</id>
+    <published>2017-04-24T06:22:57.000Z</published>
+    <updated>2017-04-24T06:26:39.755Z</updated>
+    
+    <content type="html"><![CDATA[<p>1 <a href="http://class.imooc.com/sc/27" target="_blank" rel="external">ECShop3从基本使用到二次开发系列课程</a><br>步骤一  系统使用及模板开发</p>
+<ol>
+<li>系统安装和网店基础设置</li>
+<li>系统商品及分类管理</li>
+<li>ecshop模板整合之首页</li>
+<li>模板整合之分类列表页和详情页</li>
+</ol>
+<p>步骤二 分析源码</p>
+<ol>
+<li>目录结构及系统初始化文件分析</li>
+<li>商城首页详解</li>
+<li>商品类表页分析</li>
+<li>评论模块分析</li>
+<li>商品模块分析</li>
+<li>用户注册登录及购物流程分析</li>
+</ol>
+<p>步骤三 功能模块开发</p>
+<ol>
+<li>简单功能开发与调试</li>
+</ol>
+<p>2  <a href="http://www.imooc.com/learn/703" target="_blank" rel="external">PHP环境LAMP/LNMP安装与配置</a></p>
+<p>3 <a href="http://www.imooc.com/learn/799" target="_blank" rel="external">RBAC打造通用web管理权限</a></p>
+<ol>
+<li>课程介绍</li>
+<li>权限模型介绍</li>
+<li>初始RBAC</li>
+<li>实战</li>
+</ol>
+<p>4 <a href="http://www.imooc.com/learn/809" target="_blank" rel="external">redis的入门与应用</a> </p>
+<ol>
+<li>课程简介</li>
+<li>redis的安装</li>
+<li>redis数据类型介绍</li>
+<li>php的redis扩展安装</li>
+<li>php操作redis</li>
+<li>课程总结</li>
+</ol>
+<p>5 <a href="http://www.imooc.com/learn/722" target="_blank" rel="external">大型PHP电商网站商品秒杀功能实现思路分析</a></p>
+<blockquote>
+<p>众所周知，对于一个流量凶猛、稳定性要求极高的商品秒杀功能，传统的PHP技术很难满足要求，所以需要借助于网站架构设计、服务器配置、负载均衡、cdn加速、云解析、redis等多种手段方能实现，本课程属于PHP高级课程，主要介绍功能实现思路，不涉及代码具体实现，小白慎入！</p>
+</blockquote>
+<p>6 <strong><a href="http://www.imooc.com/learn/721" target="_blank" rel="external">php+mysql 模拟队列发送邮件</a></strong></p>
+<ol>
+<li>邮件发送流程及原理分析</li>
+<li>利用phpmailier类实现队列发送邮件</li>
+</ol>
+<p>7 <a href="http://www.imooc.com/learn/811" target="_blank" rel="external">Restful API实战</a></p>
+<ol>
+<li>Restful是什么 </li>
+<li>为什么要使用Restful </li>
+<li>如何使用</li>
+</ol>
+<p>8 <a href="http://www.imooc.com/learn/607" target="_blank" rel="external">Ajax技术在购物车中的应用（PHP篇）</a><br>9 <a href="http://www.imooc.com/learn/596" target="_blank" rel="external">PHP第三方登录—QQ登录</a></p>
+<p>10 <a href="http://www.imooc.com/learn/557" target="_blank" rel="external">PHP第三方登录—OAuth2.0协议</a></p>
+<p> 11 <a href="http://www.imooc.com/learn/547" target="_blank" rel="external">使用wordpress极速建站</a></p>
+<p>12 <a href="http://www.imooc.com/learn/163" target="_blank" rel="external">PHP开发APP接口</a> </p>
+<p> 13 <a href="http://www.imooc.com/learn/201" target="_blank" rel="external">PHP无限级分类技术</a></p>
+<p>14<a href="http://www.imooc.com/learn/170" target="_blank" rel="external">在Ubuntu Server下搭建LAMP环境</a></p>
+<p>15 <a href="http://www.imooc.com/learn/330" target="_blank" rel="external">PHP实现页面静态化</a></p>
+<p>16<a href="http://www.imooc.com/learn/205" target="_blank" rel="external">性能优化之PHP优化</a></p>
+<p>17 <a href="http://www.imooc.com/learn/758" target="_blank" rel="external">PHP中的HTTP协议</a></p>
+<ol>
+<li>HTTP协议基础详解</li>
+<li>HTTP写一综合应用</li>
+<li>反向AJax实现即时聊天程序</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1 &lt;a href=&quot;http://class.imooc.com/sc/27&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ECShop3从基本使用到二次开发系列课程&lt;/a&gt;&lt;br&gt;步骤一  系统使用及模板开发&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;系统安装和网店基
+    
+    </summary>
+    
+      <category term="编程" scheme="https://jeristiano.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="php业务逻辑" scheme="https://jeristiano.github.io/tags/php%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql数据库的优化</title>

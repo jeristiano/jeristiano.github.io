@@ -4,38 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>mysql数据库的优化 | Jeremy&#39;s space</title>
+    <title>【译】失去了编程的兴趣，该做点什么？ | Jeremy&#39;s space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="jeremyK">
     
 
     
-    <meta name="description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
- 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
-mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
-2 语句查询优化
+    <meta name="description" content="最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。
 
-sql语句尽可能">
+问题描述：我现在是信息科学专业的即将毕业的学生，然后，随着渐渐的失去了对编程的兴趣，我先在被毕业后去做什么的问题困扰着，我现在真的很焦虑，还有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql数据库的优化">
-<meta property="og:url" content="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/index.html">
+<meta property="og:title" content="【译】失去了编程的兴趣，该做点什么？">
+<meta property="og:url" content="https://jeristiano.github.io/2017/04/24/【译】失去了编程的兴趣，该做点什么？/index.html">
 <meta property="og:site_name" content="Jeremy's space">
-<meta property="og:description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
- 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
-mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
-2 语句查询优化
+<meta property="og:description" content="最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。
 
-sql语句尽可能">
-<meta property="og:updated_time" content="2017-03-12T06:56:03.138Z">
+问题描述：我现在是信息科学专业的即将毕业的学生，然后，随着渐渐的失去了对编程的兴趣，我先在被毕业后去做什么的问题困扰着，我现在真的很焦虑，还有">
+<meta property="og:updated_time" content="2017-04-24T06:32:15.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql数据库的优化">
-<meta name="twitter:description" content="想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。
- 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！
-mysql数据库的优化1 开启mysql慢查询日志，通过慢查询日志发现有问题sql
-2 语句查询优化
+<meta name="twitter:title" content="【译】失去了编程的兴趣，该做点什么？">
+<meta name="twitter:description" content="最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。
 
-sql语句尽可能">
+问题描述：我现在是信息科学专业的即将毕业的学生，然后，随着渐渐的失去了对编程的兴趣，我先在被毕业后去做什么的问题困扰着，我现在真的很焦虑，还有">
 
     
     <link rel="alternative" href="/atom.xml" title="Jeremy&#39;s space" type="application/atom+xml">
@@ -97,14 +88,14 @@ sql语句尽可能">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/12/mysql数据库的优化/" title="mysql数据库的优化" itemprop="url">mysql数据库的优化</a>
+      <a href="/2017/04/24/【译】失去了编程的兴趣，该做点什么？/" title="【译】失去了编程的兴趣，该做点什么？" itemprop="url">【译】失去了编程的兴趣，该做点什么？</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jeremyK" target="_blank" itemprop="author">jeremyK</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-12T06:52:26.000Z" itemprop="datePublished"> 发表于 2017-03-12</time>
+    <time datetime="2017-04-24T06:25:56.000Z" itemprop="datePublished"> 发表于 2017-04-24</time>
     
   </p>
 </header>
@@ -113,57 +104,23 @@ sql语句尽可能">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql数据库的优化"><span class="toc-number">1.</span> <span class="toc-text">mysql数据库的优化</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p> 想起年前公司架构师专门同我们这些developer交流数据库设计和优化心得时，讲过他在每年双十一是如何应对高并发/大数据读写，以及当年他遇到的一些紧急情况。</p>
-<p> 有感而发，数据库性能是多美的至关重要。想想双十一的晚上，几千万的并发量，然后数据库挂掉了，这该是多么恐怖的经历呢！！</p>
-<h3 id="mysql数据库的优化"><a href="#mysql数据库的优化" class="headerlink" title="mysql数据库的优化"></a>mysql数据库的优化</h3><p>1 开启mysql慢查询日志，通过慢查询日志发现有问题sql</p>
-<p>2 语句查询优化</p>
-<ul>
-<li>sql语句尽可能简单，大语句拆小语句</li>
-<li>避免使用 select * from / not in /like 这样高消耗的语句</li>
-<li>少用链接join</li>
-<li>使用group by 分组，自动排序</li>
-<li>批量更新，尽量避免循环写入数据</li>
-</ul>
-<p>3 优化表结构</p>
-<ul>
-<li>数据库表的范式优化（三大范式）</li>
-<li>尽可能地使用最有效(最小)的数据类型</li>
-<li>不要将数字存储为字符串，字符转化为数字，用int存储ip而非char(15)</li>
-<li>优先使用枚举类型设置类似性别，是否等</li>
-<li>使用not null （null字段很难优化查询）</li>
-<li>不再数据库里存图片</li>
-<li>数据库表拆分</li>
-</ul>
-<p>4 索引优化</p>
-<p>建立合适的索引（主键索引，唯一索引，普通索引）</p>
-<ol>
-<li>较频繁的作为查询条件字段应该创建索引</li>
-<li>不会出现在WHERE子句中字段不该创建索</li>
-</ol>
+		<p>最近心情变化很大，情绪复杂，就像是一辆即将没有油的汽车，缺乏生活的动力，偶然在quora上看到这篇文章，决定翻译出来，当一个人对热爱的东西失去了兴趣时，该怎么做，就像回答者说的，兴趣是不会自己平白无故的消失的，你要做的就是找到问题的原因，迈出艰难的一步。</p>
 <blockquote>
-<p>注意： 唯一性太差的字段不适合单独创建索引，即使频繁作为查询条件，更新非常频繁的字段不适合创建索引<br>索引是有代价的，虽然查询速度提高了，但是毁形象到增删改的效率</p>
+<p>问题描述：我现在是信息科学专业的即将毕业的学生，然后，随着渐渐的失去了对编程的兴趣，我先在被毕业后去做什么的问题困扰着，我现在真的很焦虑，还有一学期就要毕业被仍向社会了，有什么好的建议吗？</p>
 </blockquote>
-<p>5 合理的硬件资源和操作系统</p>
-<ul>
-<li>读写分离，主从数据库<br>主库master用来写入，slave1—slave3都用来做select，每个数据库分担的压力小了很多</li>
-</ul>
-<p>6 缓存机制</p>
-<ul>
-<li>使用redis memcached等nosql数据库作为缓存，减少数据的请求，分担数据库的压力。</li>
-</ul>
+<p>匿名回答：</p>
+<p>大学毕业后，我也有过相同的状态，我几乎一年没有从事编程的工作，转而去做了其他的事情。大学时我被许多问题困扰着，钱啊，感情啊，这给我带来了十分大的压力，最后影响到我的学业，简单的说，大学最后两年我就像是在地狱一样。也许是我没理解它，提起编程脑子我就会联想到一大堆困难和痛苦，在心理层面上对编程有很大的抵触。</p>
+<p>我不知道你经历过什么艰难困苦的人生，它可能给你带来心理阴影，但如果你曾经热爱过编程的话，那么兴趣是不会自己消失的，你需要弄明白，你为什么失去了兴趣，然后解决这个问题，重新找回对编程的热爱。</p>
+<p>大学学业不佳的内疚感，自我感觉失败，在解决了这些问题后我重新找回了编程的乐趣，同时意识到，在当时的环境中，我做的其实很好。这非常不容易，尤其是，以前你的生活过得还不错，并不知道失败是什么，直到那段糟糕的日子到来。我知道拿自己的痛苦经历和别人相比并不真实。但是我真的觉得那段经历是十分艰难。</p>
+<p>为了解决这些难题，我其实寻求了职业帮助，我去看了心理医生，这帮助了我很多，我不知道你信教吗，我相信上帝，我去了教堂寻求上帝的帮助，她也帮助了我很多，帮我克服了我心理的旧伤口。我也同交往了三年有虐待倾向的女朋友分手了，她让我的生活一团糟。这一切都十分的十分艰难，但我很高兴，我做了改变。</p>
+<p>然后，我克服了这些问题，一点一滴的找回生活的信心，对编程的兴趣慢慢的回来了，我甚至都没留意到，我开始写一些小的东西，然后是大的，我又学了一门新的编程语言，新的web框架，找了一份程序员的工作，并且现在一直在从事。业余时间，我还做了个人的项目，我重新热爱了编程，甚至更加热爱了。</p>
 <blockquote>
-<p>注： 数据库的优化方法有很多，很多方法来自于实际的经验，而不是纸上谈兵，这也是为什么DBA这个职业是经验重要于理论的原因。</p>
+<p>原文出处：<a href="https://www.quora.com/Losing-interest-in-programming-What-to-do" target="_blank" rel="external">https://www.quora.com/Losing-interest-in-programming-What-to-do</a></p>
 </blockquote>
-<p>转发声明：以下是不少开发者总结的心得，直接转发在这里作为参考。同时感谢这些作者的无私奉献！</p>
-<ul>
-<li><a href="http://www.cnblogs.com/villion/archive/2009/07/23/1893765.html" target="_blank" rel="external">MySQL数据库优化总结</a></li>
-<li><a href="http://www.imooc.com/learn/194" target="_blank" rel="external">慕课网-性能优化之MySQL优化视频教程</a></li>
-<li><a href="http://blog.csdn.net/samjustin1/article/details/52212421" target="_blank" rel="external">mysql数据库优化总结-&gt;MySQL性能调优与架构设计读书笔记</a></li>
-</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -171,13 +128,13 @@ sql语句尽可能">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/编程/">编程</a>
+  <a class="article-category-link" href="/categories/杂谈/">杂谈</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/mysql/">mysql</a>
+  <span></span> <a href="/tags/翻译/">翻译</a>
   </div>
 
 </div>
@@ -186,7 +143,7 @@ sql语句尽可能">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/" data-title="mysql数据库的优化 | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
+	  <div data-url="https://jeristiano.github.io/2017/04/24/【译】失去了编程的兴趣，该做点什么？/" data-title="【译】失去了编程的兴趣，该做点什么？ | Jeremy&#39;s space" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -199,19 +156,11 @@ sql语句尽可能">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/04/24/php业务逻辑课程收集/" title="php业务逻辑课程收集">
-  <strong>上一篇：</strong><br/>
-  <span>
-  php业务逻辑课程收集</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/03/11/Laravel-学习笔记：神奇的服务容器/"  title="Laravel-学习笔记：神奇的服务容器">
+<a href="/2017/04/24/php业务逻辑课程收集/"  title="php业务逻辑课程收集">
  <strong>下一篇：</strong><br/> 
- <span>Laravel-学习笔记：神奇的服务容器
+ <span>php业务逻辑课程收集
 </span>
 </a>
 </div>
@@ -220,7 +169,7 @@ sql语句尽可能">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/03/12/mysql数据库的优化/" data-title="mysql数据库的优化" data-url="https://jeristiano.github.io/2017/03/12/mysql数据库的优化/"></div>
+	<div class="ds-thread" data-thread-key="2017/04/24/【译】失去了编程的兴趣，该做点什么？/" data-title="【译】失去了编程的兴趣，该做点什么？" data-url="https://jeristiano.github.io/2017/04/24/【译】失去了编程的兴趣，该做点什么？/"></div>
 </section>
 
 
@@ -230,7 +179,7 @@ sql语句尽可能">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql数据库的优化"><span class="toc-number">1.</span> <span class="toc-text">mysql数据库的优化</span></a></li></ol>
+ 
  
   </div>
 
